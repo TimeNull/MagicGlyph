@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63686020edad18646a347aa688a80e4c, type: 3}
+  m_Name: ScenesHandler
+  m_EditorClassIdentifier: 
+  Worlds:
+  - levels:
+    - {fileID: 102900000, guid: 240a8ffdcfda4f74c988516fa090f7f1, type: 3}
+    - {fileID: 102900000, guid: 967ec7ce94002ff42b084ce6a49baf3f, type: 3}
+    - {fileID: 102900000, guid: 1ae5b120c0f789f4a89db01a978aaa88, type: 3}
+    - {fileID: 102900000, guid: 99c5bfb8b2542fa47990b542bfff6b07, type: 3}
+    - {fileID: 102900000, guid: 8a5399ee8128d654bb09531e29c40ffc, type: 3}
+    - {fileID: 102900000, guid: 634cb08805cd57548ae8df747820a8f7, type: 3}
+    - {fileID: 102900000, guid: 56768cc91668ed5469b5be93cf334a3e, type: 3}
+    - {fileID: 102900000, guid: ae92bd0e84fb9ab4ab9c8e2caff8e893, type: 3}
+    - {fileID: 102900000, guid: 8355d5c3a7058e84fa1e72b22d073786, type: 3}
+    Boss:
+    - {fileID: 102900000, guid: 47b20f217e96d31448b567402c6de748, type: 3}
+  - levels: []
+    Boss:
+    - {fileID: 102900000, guid: b06a0f9e8a8d60d49b6413c64d22aecf, type: 3}
+  - levels: []
+    Boss:
+    - {fileID: 102900000, guid: 4697cc077dabeae429dcd193911d665b, type: 3}
