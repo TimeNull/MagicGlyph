@@ -7,7 +7,7 @@ namespace MagicGlyphs.Characters
     public class WolfGlyph : AnimalGlyph
     {
 
-
+        //specific skills
 
     }
 }

@@ -6,6 +6,7 @@ public class UILookAtCamera : MonoBehaviour
 {
     GameObject cmPosition;
 
+
     private void Start()
     {
         cmPosition = Camera.main.gameObject;
@@ -15,4 +16,6 @@ public class UILookAtCamera : MonoBehaviour
     {
         transform.LookAt(cmPosition.transform.rotation * Vector3.back + transform.position, cmPosition.transform.rotation * Vector3.up);
     }
+
+
 }

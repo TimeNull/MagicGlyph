@@ -1,8 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 using MagicGlyphs.Characters;
 using MagicGlyphs.ScriptableObjects;
+
     
 namespace MagicGlyphs
 {
@@ -10,7 +12,9 @@ namespace MagicGlyphs
     {
         [SerializeField] private Enemy enemySO; // Desired object life configuration (Character, Enemy...)
         [SerializeField] private Character characterSO;
-        
+
+        Slider uiLife;
+
         private float maxLife;
         public float MaxLife { get => maxLife; }
 
@@ -31,9 +35,14 @@ namespace MagicGlyphs
 
         System.Action schedule;
 
+        private void Awake()
+        {
+            uiLife = GetComponentInChildren<Slider>();
+        }
 
         private void Start()
         {
+            
             if (enemySO)
             {
                 maxLife = enemySO.maxLife;
@@ -46,11 +55,17 @@ namespace MagicGlyphs
 
             actualLife = maxLife;
 
+            SetMaxLifeUI(maxLife);
+            SetActualLifeUI(actualLife);
+
         }
 
         private void Update()
         {
-            
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                ApplyDamage(20);
+            }
         }
 
         
@@ -64,6 +79,8 @@ namespace MagicGlyphs
            
             actualLife -= damage;
             Debug.Log("objeto:" + transform.name + actualLife);
+
+            SetActualLifeUI(actualLife);
 
             if (actualLife <= 0)
                 schedule += OnDeath.Invoke; //This avoid race condition when objects kill each other.
@@ -96,6 +113,24 @@ namespace MagicGlyphs
         {
 
         }
+
+
+        #region UI
+
+        public void SetMaxLifeUI(float value)
+        {
+            if (!ReferenceEquals(uiLife, null))
+                uiLife.maxValue = value;
+        }
+
+        public void SetActualLifeUI(float value)
+        {
+            if (!ReferenceEquals(uiLife, null))
+                uiLife.value = value;
+        }
+
+
+        #endregion
 
     }
 }

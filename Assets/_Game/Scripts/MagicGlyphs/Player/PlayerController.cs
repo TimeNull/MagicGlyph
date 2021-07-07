@@ -6,9 +6,10 @@ using MagicGlyphs.Weapons;
 
 namespace MagicGlyphs.Characters
 {
-    [RequireComponent(typeof(PlayerInput))]
-    [RequireComponent(typeof(CharacterController))]
-    [RequireComponent(typeof(Animator))]
+    [RequireComponent(typeof(PlayerInput))] //project script
+    [RequireComponent(typeof(CharacterController))] //unity component
+    [RequireComponent(typeof(Animator))] //unity component
+
     public class PlayerController : Controller
     {
         // ------------------- REFERENCES ----------------------------
