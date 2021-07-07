@@ -114,10 +114,12 @@ namespace MagicGlyphs.Characters
 
             if (checkVelocity.magnitude > 0)
             {
-
-                //look at own transform direction while moving
-                Quaternion toRotation = Quaternion.LookRotation(playerInput.Direction(), Vector3.up);
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed);      
+                if (!GetComponent<Target>().nearestGameObject)
+                {
+                    //look at own transform direction while moving
+                    Quaternion toRotation = Quaternion.LookRotation(playerInput.Direction(), Vector3.up);
+                    transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed);
+                }
 
                 if (checkVelocity.magnitude > 0.1f && !m_move)
                 {
