@@ -14,14 +14,14 @@ namespace MagicGlyphs
         [SerializeField] private LayerMask layersAfected;
         private float minDist;
         private int getNearestObject = 0;
-        GameObject nearestGameObject;
+        [HideInInspector] public GameObject nearestGameObject;
         [SerializeField] private float range;
         [SerializeField] private Controller controller;
 
         private bool stopTrigger;
 
         // Update is called once per frame
-        void LateUpdate()
+        void Update()
         {
             OnRangeEnter();
         }
@@ -34,6 +34,8 @@ namespace MagicGlyphs
 
             if (nearestGameObject)
             {
+                transform.LookAt(new Vector3(nearestGameObject.transform.position.x, transform.position.y, nearestGameObject.transform.position.z));
+
                 if (Vector3.Distance(nearestGameObject.transform.position, transform.position) > range || !nearestGameObject.activeSelf)
                 {
                     nearestGameObject = null;
