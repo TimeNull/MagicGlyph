@@ -35,18 +35,11 @@ namespace MagicGlyphs
 
         }
 
-        private void Update()
+        private void OnCollisionEnter(Collision other)
         {
-            affectedObjects = Physics.OverlapSphere(transform.position, range, layersToAffect);
-
-            foreach (Collider col in affectedObjects)
-            {
-                Debug.Log(col.transform);
-                col.GetComponent<Life>().ApplyDamage(damage);
-            }
-
-            if(affectedObjects.Length > 0)
-                gameObject.SetActive(false);
+            if (other.gameObject.GetComponent<Life>())
+                other.gameObject.GetComponent<Life>().ApplyDamage(damage);
+            gameObject.SetActive(false);
         }
 
     }
