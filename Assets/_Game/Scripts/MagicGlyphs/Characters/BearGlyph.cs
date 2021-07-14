@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace MagicGlyphs.Characters
 {
-    public class BearGlyph : AnimalGlyph
+    public class BearGlyph : AnimalGlyph //responsable by things that only bear must do
     {
         
     }

@@ -5,7 +5,7 @@ using MagicGlyphs.ScriptableObjects;
 
 namespace MagicGlyphs.Characters.Enemies
 {
-    public abstract class EnemyBehavior : MonoBehaviour
+    public abstract class EnemyBehavior : MonoBehaviour //responsable by things that all enemy behaviors must do
     {
         //Here we have animation management, 
 
