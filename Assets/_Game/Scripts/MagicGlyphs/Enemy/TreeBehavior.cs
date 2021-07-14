@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace MagicGlyphs.Characters.Enemies
 {
-    public class TreeBehavior : EnemyBehavior
+    public class TreeBehavior : EnemyBehavior //responsable by things that only tree enemy must do
     {
 
 

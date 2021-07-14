@@ -6,7 +6,7 @@ using MagicGlyphs.Weapons;
 
 namespace MagicGlyphs
 {
-    public abstract class Controller : MonoBehaviour
+    public abstract class Controller : MonoBehaviour //responsable by things that all controllers must do
     {
 
         protected Animator anim;

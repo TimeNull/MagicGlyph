@@ -5,7 +5,7 @@ using UnityEngine;
 namespace MagicGlyphs.Characters
 {
     [RequireComponent(typeof(PlayerController))]
-    public class AnimalGlyph : MonoBehaviour
+    public class AnimalGlyph : MonoBehaviour //responsable by things that all animalsglyphs must do
     {
         
     }

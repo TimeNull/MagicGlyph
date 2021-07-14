@@ -4,10 +4,10 @@ using UnityEngine;
 
 namespace MagicGlyphs.Characters
 {
-    public class WolfGlyph : AnimalGlyph
+    public class WolfGlyph : AnimalGlyph //responsable by things that only wolf must do
     {
 
-
+        //specific skills
 
     }
 }
