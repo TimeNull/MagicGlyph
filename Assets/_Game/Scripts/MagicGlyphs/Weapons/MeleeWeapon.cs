@@ -6,38 +6,50 @@ namespace MagicGlyphs.Weapons
 {
     public class MeleeWeapon : Weapon
     {
-        private bool m_InAttack;
+        
 
         [SerializeField] private float attackRadius;
-        [SerializeField] private LayerMask layer;
+        [SerializeField] private float damage;
+        [SerializeField] private LayerMask enemyLayer;
 
-        Collider[] colliders = new Collider[10];
+        Collider[] colliders = new Collider[16]; // limiting to 10 enemies at once
         int hitted;
 
-        public void BeginAttack()
+        // Just called the overrides to remember what methods are in the parent class
+        public override void BeginAttack()
         {
-            m_InAttack = true;
+            base.BeginAttack();
         }
 
-        public void EndAttack()
+        public override void EndAttack()
+        {
+            base.EndAttack();
+        }
+
+        protected override void FixedUpdate()
+        {
+            base.FixedUpdate();
+            Debug.Log(colliders.Length);
+        }
+
+        protected override void Attack()
         {
             m_InAttack = false;
-        }
 
-        private void FixedUpdate()
-        {
-            if (m_InAttack)
+            hitted = Physics.OverlapSphereNonAlloc(transform.position, attackRadius, colliders, enemyLayer.value); // NonAlloc: it's basically for microperformance
+
+           
+            for (int i = 0; i < hitted; i++)
             {
-                
-                hitted = Physics.OverlapSphereNonAlloc(transform.position, attackRadius, colliders, layer); // NonAlloc: it is for user use his own array, and limit the number of collisions
+                Life aa = colliders[i].transform.GetComponent<Life>();
 
-                for (int i = 0; i < hitted; i++)
+                if (aa)
                 {
-                    Life aa = colliders[i].transform.GetComponent<Life>();
-                    if (aa && aa.transform.gameObject.layer == layer)
-                        aa.ApplyDamage(200f);
+
+                    aa.ApplyDamage(damage);
 
                 }
+
             }
         }
 

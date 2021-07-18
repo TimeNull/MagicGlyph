@@ -13,9 +13,9 @@ namespace MagicGlyphs.ScriptableObjects
         public string description;
 
         [Header("Attributes")]
-        [Range(20, 200)]
+        [Range(20, 2000)]
         public float maxLife;
-        [Range(20, 200)]
+        [Range(20, 2000)]
         public float startMana;
         [Range(1, 30)]
         public float startSpeed;

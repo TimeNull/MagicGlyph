@@ -6,10 +6,11 @@ using MagicGlyphs.Weapons;
 
 namespace MagicGlyphs.Characters
 {
-    [RequireComponent(typeof(PlayerInput))]
-    [RequireComponent(typeof(CharacterController))]
-    [RequireComponent(typeof(Animator))]
-    public class PlayerController : Controller
+    [RequireComponent(typeof(PlayerInput))] //project script
+    [RequireComponent(typeof(CharacterController))] //unity component
+    [RequireComponent(typeof(Animator))] //unity component
+
+    public class PlayerController : Controller //responsable by things that all characters must do
     {
         // ------------------- REFERENCES ----------------------------
 
@@ -19,7 +20,6 @@ namespace MagicGlyphs.Characters
 
         private PlayerInput playerInput;
         private CharacterController cc;
-        private MeleeWeapon meleeWeapon;
 
         // ------------------- PLAYER PARAMETERS ----------------------
 
@@ -56,7 +56,7 @@ namespace MagicGlyphs.Characters
             anim = GetComponent<Animator>();
             playerInput = GetComponent<PlayerInput>();
 
-            meleeWeapon = transform.GetChild(0).GetComponent<MeleeWeapon>();
+            weapon = GetComponentInChildren<Weapon>(); 
 
             //------ SO inicialization ------
 
@@ -150,7 +150,7 @@ namespace MagicGlyphs.Characters
         public override void AttackBegin()
         {
             base.AttackBegin();
-            meleeWeapon.BeginAttack();
+            weapon.BeginAttack();
 
         }
 
@@ -158,19 +158,23 @@ namespace MagicGlyphs.Characters
         public override void AttackEnd()
         {
             base.AttackEnd();
-            meleeWeapon.EndAttack();
+            weapon.EndAttack();
 
         }
 
         protected override void Damaged()
         {
             base.Damaged();
+            //animation and feedback stuff here
+            Debug.Log("animação de levou dano");
 
         }
 
         protected override void Died()
         {
             base.Died();
+            //animation and feedback stuff here
+            Debug.Log("animação de morreu");
         }
 
 

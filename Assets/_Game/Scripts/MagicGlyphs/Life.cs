@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using MagicGlyphs.Characters;
 using MagicGlyphs.ScriptableObjects;
+
     
 namespace MagicGlyphs
 {
@@ -10,7 +10,7 @@ namespace MagicGlyphs
     {
         [SerializeField] private Enemy enemySO; // Desired object life configuration (Character, Enemy...)
         [SerializeField] private Character characterSO;
-        
+
         private float maxLife;
         public float MaxLife { get => maxLife; }
 
@@ -23,7 +23,7 @@ namespace MagicGlyphs
         
         [SerializeField] private UnityEvent OnBecomeVulnerable;
         [SerializeField] private UnityEvent OnReceiveDamage;
-        [SerializeField] private UnityEvent OnResetDamage;
+        [SerializeField] private UnityEvent OnReset;
         [SerializeField] private UnityEvent OnDeath;
 
         [SerializeField] List<MonoBehaviour> OnDamageReceivers; //this could be done by Unity Event but Enum isn't showed in Unity Event inspector, so this is necessary
@@ -31,9 +31,9 @@ namespace MagicGlyphs
 
         System.Action schedule;
 
-
         private void Start()
         {
+            
             if (enemySO)
             {
                 maxLife = enemySO.maxLife;
@@ -46,11 +46,20 @@ namespace MagicGlyphs
 
             actualLife = maxLife;
 
+            OnReset?.Invoke();
+
+            if (OnReset.GetPersistentEventCount() < 2)
+                Debug.LogWarning("You need to add LifeBar Script 'SetMaxLifeUI' and 'SetActualLifeUI' methods in the OnReset Unity Event for properly Life UI feedback!");
+
+
         }
 
         private void Update()
         {
-            
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                ApplyDamage(20);
+            }
         }
 
         
@@ -63,12 +72,13 @@ namespace MagicGlyphs
             }
            
             actualLife -= damage;
-            Debug.Log("objeto:" + transform.name + actualLife);
+           
+            //Debug.Log("objeto:" + transform.name + actualLife);
 
             if (actualLife <= 0)
                 schedule += OnDeath.Invoke; //This avoid race condition when objects kill each other.
             else
-                OnReceiveDamage.Invoke();
+                OnReceiveDamage?.Invoke();
 
             
 
@@ -89,12 +99,6 @@ namespace MagicGlyphs
                 schedule();
                 schedule = null;
             }
-        }
-
-
-        public void ResetDamage()
-        {
-
         }
 
     }

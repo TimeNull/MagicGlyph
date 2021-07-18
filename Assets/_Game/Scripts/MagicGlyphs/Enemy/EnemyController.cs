@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace MagicGlyphs.Characters.Enemies
 {
-    public class EnemyController : Controller
+    public class EnemyController : Controller //responsable by things that all enemies must do
     {
 
         public override void TriggerAttack()
