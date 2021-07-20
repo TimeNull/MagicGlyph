@@ -1,21 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MagicGlyphs.Characters.Enemies;
 
 namespace MagicGlyphs
 {
-    public class BossBehavior : MonoBehaviour
+   
+    public class BossBehavior : EnemyBehavior
     {
-        // Start is called before the first frame update
-        void Start()
+        // enemyController comes by the base class
+
+        [SerializeField] private float timeToStart;
+
+        protected override void Start()
         {
-        
+            base.Start();
+            StartCoroutine("BossCycle", timeToStart);
+
         }
 
-        // Update is called once per frame
-        void Update()
+        IEnumerator BossCycle()
         {
-        
+            //Timer inicial 
+            yield return new WaitForSeconds(3f);
+
+            while (true)
+            {
+
+            }
         }
+
+        IEnumerator InvokeMobs()
+        {
+            yield return null;
+        }
+
     }
 }

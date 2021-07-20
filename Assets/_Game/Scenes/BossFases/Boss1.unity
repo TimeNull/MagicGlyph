@@ -4175,7 +4175,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7431876217595644402, guid: d0d288a1f39483b43983800af7f0ff63, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 3.048
+      value: 2.39
       objectReference: {fileID: 0}
     - target: {fileID: 7431876217595644402, guid: d0d288a1f39483b43983800af7f0ff63, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -6206,6 +6206,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4874802182062810, guid: 5171d5eb12e0f184a8761aa4157f7d00, type: 3}
   m_PrefabInstance: {fileID: 2066440598}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2097379887 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4011546142057314353, guid: d0d288a1f39483b43983800af7f0ff63, type: 3}
+  m_PrefabInstance: {fileID: 1576101332}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 936601420b821004f9e141a71375b6ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2100169349
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6810,21 +6821,69 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c72583aa4bfeed41918b18003d7f8bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemySO: {fileID: 0}
-  characterSO: {fileID: 0}
+  life: {fileID: 11400000, guid: 5420c7c93d9cf5d4b881afa3d4d4cc68, type: 2}
   OnBecomeVulnerable:
     m_PersistentCalls:
       m_Calls: []
   OnReceiveDamage:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2097379887}
+        m_TargetAssemblyTypeName: MagicGlyphs.LifeBar, Assembly-CSharp
+        m_MethodName: SetActualLifeUI
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 3901874485684378979}
+          m_ObjectArgumentAssemblyTypeName: MagicGlyphs.Life, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnReset:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2097379887}
+        m_TargetAssemblyTypeName: MagicGlyphs.LifeBar, Assembly-CSharp
+        m_MethodName: SetMaxLifeUI
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 3901874485684378979}
+          m_ObjectArgumentAssemblyTypeName: MagicGlyphs.Life, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2097379887}
+        m_TargetAssemblyTypeName: MagicGlyphs.LifeBar, Assembly-CSharp
+        m_MethodName: SetActualLifeUI
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 3901874485684378979}
+          m_ObjectArgumentAssemblyTypeName: MagicGlyphs.Life, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnDeath:
     m_PersistentCalls:
-      m_Calls: []
-  OnDamageReceivers: []
+      m_Calls:
+      - m_Target: {fileID: 3901874485684378978}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnDamageReceivers:
+  - {fileID: 3901874485684378980}
 --- !u!114 &3901874485684378980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6837,6 +6896,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccedc2a7d7f0e4545a0e4a5bc55d0890, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemy: {fileID: 11400000, guid: 5420c7c93d9cf5d4b881afa3d4d4cc68, type: 2}
 --- !u!114 &3901874485684378981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6849,6 +6909,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30fa78574196de444b982c6d18ab739f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeToStart: 3
 --- !u!1 &3901875784544861668
 GameObject:
   m_ObjectHideFlags: 0
@@ -7768,7 +7829,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3901874485684378978}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.006, z: 0}
+  m_LocalPosition: {x: 0, y: -0.01, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1576101333}
@@ -8028,7 +8089,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 34ec5b5173de4f244abe173c17556136, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using MagicGlyphs.ScriptableObjects;
 using MagicGlyphs.Weapons;
+using MagicGlyphs.Utility;
 
 namespace MagicGlyphs.Characters
 {
@@ -15,8 +16,6 @@ namespace MagicGlyphs.Characters
         // ------------------- REFERENCES ----------------------------
 
         [SerializeField] private Character character;
-        [SerializeField] private Character holder;
-
 
         private PlayerInput playerInput;
         private CharacterController cc;
@@ -24,11 +23,10 @@ namespace MagicGlyphs.Characters
         // ------------------- PLAYER PARAMETERS ----------------------
 
         private float speed;
-        private float atkDistance;
-        private float atkSpeed;
-        private float atkDamage;
+
         const float gravity = -9.84f;
         const float groundedRayDistance = 1f;
+
         private Vector3 velocity; //just for x and z
         private Vector2 checkVelocity;
 
@@ -60,28 +58,12 @@ namespace MagicGlyphs.Characters
 
             //------ SO inicialization ------
 
-            speed = character.startSpeed;
-            atkDamage = character.atkDamage;
-            atkDistance = character.atkDistance;
-            atkSpeed = character.atkSpeed;
-
-            holder.startSpeed = character.startSpeed;
-            holder.atkDamage = character.atkDamage;
-            holder.atkDistance = atkDistance;
-            holder.atkSpeed = character.atkSpeed;
-
-
+            speed = character.speed;
 
         }
 
         private void Update()
         {
-            // for our playtests and balancing
-
-            speed = holder.startSpeed;
-            atkDamage = holder.atkDamage;
-            atkDistance = holder.atkDistance;
-            atkSpeed = holder.atkSpeed;
 
             Move();
         }
@@ -124,7 +106,7 @@ namespace MagicGlyphs.Characters
                 if (checkVelocity.magnitude > 0.1f && !m_move)
                 {
                     m_move = true;
-                    anim.SetTrigger("run");
+                    anim.SetTrigger(AnimatorNames.PlayerRun);
                 }
             }
             else
@@ -132,7 +114,7 @@ namespace MagicGlyphs.Characters
                 if (m_move)
                 {
                     m_move = false;
-                    anim.SetTrigger("idle");
+                    anim.SetTrigger(AnimatorNames.PlayerIdle);
                 }
             }
 
@@ -146,10 +128,15 @@ namespace MagicGlyphs.Characters
 
         }
 
+        public override void TriggerAttack()
+        {
+            anim.SetTrigger(AnimatorNames.PlayerAttack);
+        }
+
         //Called by animation
         public override void AttackBegin()
         {
-            base.AttackBegin();
+            
             weapon.BeginAttack();
 
         }
@@ -157,7 +144,7 @@ namespace MagicGlyphs.Characters
         //Called by animation
         public override void AttackEnd()
         {
-            base.AttackEnd();
+          
             weapon.EndAttack();
 
         }
@@ -181,17 +168,6 @@ namespace MagicGlyphs.Characters
         void Skill()
         {
 
-        }
-
-        // Called by animation event
-        void MeleeAttack()
-        {
-
-        }
-
-        void GetMana(bool got, int value)
-        {
-            // gold/mana system features here
         }
 
 

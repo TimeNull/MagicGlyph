@@ -10,18 +10,18 @@ namespace MagicGlyphs
     {
 
         protected Animator anim;
-        
-        [Header("References")]
-        protected Weapon weapon;
-
 
         private GameObject Target;
+
         public GameObject target { get => Target; set => Target = value; }
+
+        [Header("References")]
+        protected Weapon weapon;
 
         public virtual void TriggerAttack()
         {
             //attack animation
-            anim.SetTrigger("attack");
+           
         }
 
         // Called by animation
