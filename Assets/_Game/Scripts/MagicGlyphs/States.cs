@@ -7,7 +7,7 @@ namespace MagicGlyphs
 
     public enum Debuff
     {
-        Fire, Freeze, Slow, LessDamage, Poison
+        None, Fire, Freeze, Slow, LessDamage, Poison
     }
 
     public enum Skill

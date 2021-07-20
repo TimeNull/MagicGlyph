@@ -1,20 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MagicGlyphs.ScriptableObjects;
 
 namespace MagicGlyphs.Weapons
 {
     public class Weapon : MonoBehaviour
     {
-        GameObject m_Owner;
+   
+
+        [SerializeField] protected GeneralAttributes weaponStats;
 
         protected bool m_InAttack;
 
-        //avoid self harm
-        public void SetOwner(GameObject owner)
+
+        private void Start()
         {
-            m_Owner = owner;
+            
         }
+
 
         public virtual void BeginAttack()
         {

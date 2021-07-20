@@ -6,13 +6,14 @@ namespace MagicGlyphs.Weapons
 {
     public class MeleeWeapon : Weapon
     {
-        
+
+        // ************************************ REMEMBER TO ASSIGN THIS WITH SCRIPTABLE OBJECT
 
         [SerializeField] private float attackRadius;
-        [SerializeField] private float damage;
+        [SerializeField] private float damage; 
         [SerializeField] private LayerMask enemyLayer;
 
-        Collider[] colliders = new Collider[16]; // limiting to 10 enemies at once
+        Collider[] colliders = new Collider[16]; // limiting to 16 enemies at once
         int hitted;
 
         // Just called the overrides to remember what methods are in the parent class

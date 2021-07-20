@@ -4,9 +4,12 @@ using UnityEngine;
 
 namespace MagicGlyphs.Characters
 {
+    
     public class FoxGlyph : AnimalGlyph //responsable by things that only fox must do
     {
-       
+
+        //playerController objects comes by base class
+
     }
 
 }

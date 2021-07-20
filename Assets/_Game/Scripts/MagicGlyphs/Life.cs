@@ -8,8 +8,8 @@ namespace MagicGlyphs
 {
     public class Life : MonoBehaviour
     {
-        [SerializeField] private Enemy enemySO; // Desired object life configuration (Character, Enemy...)
-        [SerializeField] private Character characterSO;
+        [SerializeField] private GeneralAttributes life; // Desired object life configuration (Character, Enemy...)
+
 
         private float maxLife;
         public float MaxLife { get => maxLife; }
@@ -33,16 +33,8 @@ namespace MagicGlyphs
 
         private void Start()
         {
-            
-            if (enemySO)
-            {
-                maxLife = enemySO.maxLife;
-            }
-
-            if (characterSO)
-            {
-                maxLife = characterSO.maxLife;
-            }
+            life.Skill();
+            maxLife = life.maxLife;
 
             actualLife = maxLife;
 
@@ -90,6 +82,19 @@ namespace MagicGlyphs
                 receiver.ReceiveMessage(messageType);
             }
 
+        }
+
+        public void IncreaseActualLife(float value)
+        {
+            float _actualLife = actualLife + value;
+
+            if (_actualLife > maxLife)
+                actualLife = maxLife;
+        }
+
+        public void SetMaxLife(float value)
+        {
+            maxLife = value;
         }
 
         void LateUpdate()

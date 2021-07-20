@@ -5,51 +5,16 @@ using MagicGlyphs.ScriptableObjects;
 
 namespace MagicGlyphs.Characters.Enemies
 {
+    [RequireComponent(typeof(EnemyController))]
     public abstract class EnemyBehavior : MonoBehaviour //responsable by things that all enemy behaviors must do
     {
-        //Here we have animation management, 
 
-        [SerializeField] private Enemy enemy;
-        private float atkSpeed;
-        private float atkRange;
-        private float atkDistance;
-        private float atkDamage;
-        private AttackType atkType;
+        protected EnemyController enemyController; //to get ScriptableObject
 
         protected virtual void Start()
         {
-
+            enemyController = GetComponent<EnemyController>();
         }
 
-
-        protected virtual void Update()
-        {
-
-        }
-
-        // Called by Life 
-        public void eReceiveMessag(Message message)
-        {
-            if (message == Message.DAMAGED)
-            {
-                Damaged();
-            }
-            else if (message == Message.DEAD)
-            {
-                Died();
-            }
-        }
-
-        // Called by Receive Message
-        protected virtual void Damaged()
-        {
-
-        }
-
-        // Called by Receive Message
-        protected virtual void Died()
-        {
-
-        }
     }
 }
