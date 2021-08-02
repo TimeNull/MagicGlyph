@@ -33,7 +33,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7858201454474339269}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 28.56, y: -0.75, z: -8.179999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1606906761489237670}
@@ -115,10 +115,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccedc2a7d7f0e4545a0e4a5bc55d0890, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxNumberOfTargets: 0
-  targetLayer:
-    serializedVersion: 2
-    m_Bits: 0
   enemy: {fileID: 11400000, guid: fe12fcb09fa81a3439f6095d2487433e, type: 2}
 --- !u!114 &7858201454474339270
 MonoBehaviour:
@@ -140,12 +136,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5099318130692405093}
-        m_TargetAssemblyTypeName: MagicGlyphs.LifeBar, MagicGlyphs
+        m_TargetAssemblyTypeName: MagicGlyphs.LifeBar, Assembly-CSharp
         m_MethodName: SetActualLifeUI
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 7858201454474339270}
-          m_ObjectArgumentAssemblyTypeName: MagicGlyphs.Life, MagicGlyphs
+          m_ObjectArgumentAssemblyTypeName: MagicGlyphs.Life, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -155,24 +151,24 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5099318130692405093}
-        m_TargetAssemblyTypeName: MagicGlyphs.LifeBar, MagicGlyphs
+        m_TargetAssemblyTypeName: MagicGlyphs.LifeBar, Assembly-CSharp
         m_MethodName: SetMaxLifeUI
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 7858201454474339270}
-          m_ObjectArgumentAssemblyTypeName: MagicGlyphs.Life, MagicGlyphs
+          m_ObjectArgumentAssemblyTypeName: MagicGlyphs.Life, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 5099318130692405093}
-        m_TargetAssemblyTypeName: MagicGlyphs.LifeBar, MagicGlyphs
+        m_TargetAssemblyTypeName: MagicGlyphs.LifeBar, Assembly-CSharp
         m_MethodName: SetActualLifeUI
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 7858201454474339270}
-          m_ObjectArgumentAssemblyTypeName: MagicGlyphs.Life, MagicGlyphs
+          m_ObjectArgumentAssemblyTypeName: MagicGlyphs.Life, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -181,7 +177,7 @@ MonoBehaviour:
   OnDeath:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7858201454474339269}
+      - m_Target: {fileID: 1606906761489237671}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -365,6 +361,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0d288a1f39483b43983800af7f0ff63, type: 3}
+--- !u!1 &1606906761489237671 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7431876217595644403, guid: d0d288a1f39483b43983800af7f0ff63, type: 3}
+  m_PrefabInstance: {fileID: 8173951018645262164}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1606906761489237670 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7431876217595644402, guid: d0d288a1f39483b43983800af7f0ff63, type: 3}
@@ -375,7 +376,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4011546142057314353, guid: d0d288a1f39483b43983800af7f0ff63, type: 3}
   m_PrefabInstance: {fileID: 8173951018645262164}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1606906761489237671}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 936601420b821004f9e141a71375b6ce, type: 3}

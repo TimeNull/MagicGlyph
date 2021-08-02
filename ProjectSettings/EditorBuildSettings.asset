@@ -8,34 +8,34 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/_Game/Scenes/Teste Maranza.unity
     guid: 746dd41234712fd489c2e86ea577ac42
-  - enabled: 0
+  - enabled: 1
     path: Assets/_Game/Scenes/World1/W1L1.unity
     guid: 240a8ffdcfda4f74c988516fa090f7f1
-  - enabled: 0
+  - enabled: 1
     path: Assets/_Game/Scenes/World1/W1L2.unity
     guid: 967ec7ce94002ff42b084ce6a49baf3f
-  - enabled: 0
+  - enabled: 1
     path: Assets/_Game/Scenes/World1/W1L3.unity
     guid: 1ae5b120c0f789f4a89db01a978aaa88
-  - enabled: 0
+  - enabled: 1
     path: Assets/_Game/Scenes/World1/W1L4.unity
     guid: 99c5bfb8b2542fa47990b542bfff6b07
-  - enabled: 0
+  - enabled: 1
     path: Assets/_Game/Scenes/World1/W1L5.unity
     guid: 8a5399ee8128d654bb09531e29c40ffc
-  - enabled: 0
+  - enabled: 1
     path: Assets/_Game/Scenes/World1/W1L6.unity
     guid: 634cb08805cd57548ae8df747820a8f7
-  - enabled: 0
+  - enabled: 1
     path: Assets/_Game/Scenes/World1/W1L7.unity
     guid: 56768cc91668ed5469b5be93cf334a3e
-  - enabled: 0
+  - enabled: 1
     path: Assets/_Game/Scenes/World1/W1L8.unity
     guid: ae92bd0e84fb9ab4ab9c8e2caff8e893
-  - enabled: 0
+  - enabled: 1
     path: Assets/_Game/Scenes/World1/W1L9.unity
     guid: 8355d5c3a7058e84fa1e72b22d073786
-  - enabled: 0
+  - enabled: 1
     path: Assets/_Game/Scenes/LoadingScene.unity
     guid: cfef2fef9a5373740b88f617c960b6f1
   - enabled: 1
