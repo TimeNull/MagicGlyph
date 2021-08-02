@@ -5,18 +5,21 @@ using MagicGlyphs.ScriptableObjects;
 
 namespace MagicGlyphs.Weapons
 {
-    public class Weapon : MonoBehaviour
+    public abstract class Weapon : MonoBehaviour
     {
    
 
         [SerializeField] protected GeneralAttributes weaponStats;
-
+        [SerializeField] protected LayerMask targetLayer;
+        protected float damage;
+        protected float attackRadius;
         protected bool m_InAttack;
 
 
-        private void Start()
+        protected virtual void Start()
         {
-            
+            damage = weaponStats.atkDamage;
+            attackRadius = weaponStats.atkRange;
         }
 
 

@@ -15,9 +15,10 @@ MonoBehaviour:
   name: Fox
   description: The glyph of the Warrior, incarnated as a cute Wolf.
   maxLife: 200
-  startMana: 60
-  startSpeed: 5
-  atkDistance: 10
+  speed: 5
+  atkRange: 2
+  radiusDetection: 4
   atkSpeed: 10
   atkDamage: 20
+  atkDebuff: 0
   skills: 00000000

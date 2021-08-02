@@ -5,33 +5,39 @@ using UnityEngine;
 namespace MagicGlyphs
 {
     //Simplified object pooler just for gameobjects, that I adapted to
-    public class HarmlessPooler : MonoBehaviour
+    public class HarmlessPooler
     {
-        public List<GameObject> instances;
+        public List<GameObject> instances = new List<GameObject>();
 
         //comparative table to list object instance IDs with simple stack IDs
-        private Dictionary<int, int> id;
+        private Dictionary<int, int> id = new Dictionary<int, int>();
 
-        protected Stack<int> stack;
+        protected Queue<int> queue = new Queue<int>();
 
 
         public void AddObject(int count, GameObject prefab)
         {
             for (int i = 0; i < count; i++)
             {
-                instances.Add(Instantiate(prefab));
+                int a = instances.Count;
 
-                id.Add(instances[i].GetInstanceID(), i);
+                instances.Add(Object.Instantiate(prefab));
 
-                instances[i].SetActive(false);
-                stack.Push(i);
+                id.Add(instances[a].GetInstanceID(), a);
+
+                instances[a].SetActive(false);
+                instances[a].GetComponent<Enemies.EnemyController>().whatPoolIBelong = this;
+
+                queue.Enqueue(a);
             }
+            
 
         }
 
         public GameObject GetObject()
         {
-            int id = stack.Pop();
+            int id = queue.Dequeue();
+            
             instances[id].SetActive(true);
 
             return instances[id];
@@ -44,12 +50,12 @@ namespace MagicGlyphs
 
             if (this.id.TryGetValue(obj.GetInstanceID(), out id))
             {
-                stack.Push(id);
+                queue.Enqueue(id);
                 instances[id].SetActive(false);
             }
             else
             {
-                Debug.LogError("It was not possible to free the object. Reason: object not find");
+                Debug.LogError("It was not possible to free the object. Reason: object not belong to this pool");
             }
 
         }
@@ -57,7 +63,7 @@ namespace MagicGlyphs
         //debugger
         public void CheckTable()
         {
-            for (int i = 0; i < id.Count - 1; i++)
+            for (int i = 0; i < id.Count; i++)
             {
                 int id;
                 this.id.TryGetValue(instances[i].GetInstanceID(), out id);
@@ -67,5 +73,10 @@ namespace MagicGlyphs
 
         }
 
+        public void CheckQueue()
+        {
+            Debug.Log($"Tamanho da fila: {queue.Count} ");
+
+        }
     }
 }

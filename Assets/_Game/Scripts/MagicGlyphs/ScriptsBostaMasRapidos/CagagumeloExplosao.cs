@@ -9,14 +9,7 @@ namespace MagicGlyphs
         [SerializeField] float explosionRay, toxicCloudDuration, explosionDamage, tickDamage;
         [SerializeField] LayerMask layersToAffect;
         Collider[] affectedObjects;
-        bool callTickDamage;
 
-        private void Update()
-        {
-            if (callTickDamage) {
-                StartCoroutine("TickDamage");
-            }
-        }
 
         void DealDamage(float damage)
         {
@@ -31,13 +24,11 @@ namespace MagicGlyphs
         public void ExplosionActions()
         {
             DealDamage(explosionDamage);
+            InvokeRepeating("TickDamage", 0, 1);
         }
 
-        IEnumerator TickDamage()
+        private void TickDamage()
         {
-            callTickDamage = false;
-            yield return new WaitForSeconds(1);
-            callTickDamage = true;
             DealDamage(tickDamage);
         }
 

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using MagicGlyphs.ScriptableObjects;
 using MagicGlyphs.Weapons;
-using MagicGlyphs.Utility;
 
 namespace MagicGlyphs.Characters
 {
@@ -35,7 +34,7 @@ namespace MagicGlyphs.Characters
         // Prevents animation triggers from being called 17 times in a row 
 
         private bool m_move;
-        private bool m_attack;
+        private bool m_attack = false;
 
 
 
@@ -43,8 +42,10 @@ namespace MagicGlyphs.Characters
         [SerializeField] private float rotationSpeed;
 
 
-        private void Start()
+        protected override void Start()
         {
+            base.Start();
+
             DontDestroyOnLoad(gameObject);
 
             //------ Components inicialization ------
@@ -59,11 +60,13 @@ namespace MagicGlyphs.Characters
             //------ SO inicialization ------
 
             speed = character.speed;
+            radiusDetection = character.radiusDetection;
 
         }
 
-        private void Update()
+        protected override void Update()
         {
+            base.Update();
 
             Move();
         }
@@ -78,8 +81,35 @@ namespace MagicGlyphs.Characters
             }
         }
 
+        protected override void OnTargetRange()
+        {
+            
+            base.OnTargetRange();
+
+            transform.LookAt(new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z));
+           
+            if (!m_attack)
+            {
+                TriggerAttack();
+                m_attack = true;
+            }
+            
+        }
+
+        protected override void OnTargetNotRange()
+        {
+       
+            base.OnTargetNotRange();
+
+            if (m_attack)
+            {
+                TriggerAttack();
+                m_attack = false;
+            }
+        }
+
         //ehhh.. move
-        void Move()
+        private void Move()
         {
             
             cc.Move(playerInput.Direction() * speed * Time.deltaTime);
@@ -96,7 +126,7 @@ namespace MagicGlyphs.Characters
 
             if (checkVelocity.magnitude > 0)
             {
-                if (!GetComponent<Target>().nearestGameObject)
+                if (!targetOnRange)
                 {
                     //look at own transform direction while moving
                     Quaternion toRotation = Quaternion.LookRotation(playerInput.Direction(), Vector3.up);
@@ -118,7 +148,7 @@ namespace MagicGlyphs.Characters
                 }
             }
 
-            cc.Move(velocity * Time.deltaTime);
+            //cc.Move(velocity * Time.deltaTime);
 
         }
 
@@ -128,7 +158,8 @@ namespace MagicGlyphs.Characters
 
         }
 
-        public override void TriggerAttack()
+        //Called by Target
+        public void TriggerAttack()
         {
             anim.SetTrigger(AnimatorNames.PlayerAttack);
         }

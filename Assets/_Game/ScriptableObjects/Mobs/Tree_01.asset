@@ -17,8 +17,8 @@ MonoBehaviour:
   maxLife: 200
   speed: 0
   atkRange: 10
-  triggerDistance: 0
+  radiusDetection: 20
   atkSpeed: 5
   atkDamage: 40
-  attackType: 0
   atkDebuff: 0
+  attackType: 0

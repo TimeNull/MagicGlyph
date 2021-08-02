@@ -106,6 +106,12 @@ namespace MagicGlyphs
             }
         }
 
+        private void OnDisable()
+        {
+            actualLife = maxLife;
+            OnReset?.Invoke();
+        }
+
     }
 }
 

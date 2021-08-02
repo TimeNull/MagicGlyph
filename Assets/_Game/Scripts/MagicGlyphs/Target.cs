@@ -1,9 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
-using MagicGlyphs.Characters;
-using MagicGlyphs.Characters.Enemies;
 
 namespace MagicGlyphs
 {
@@ -73,23 +70,23 @@ namespace MagicGlyphs
 
                 transform.LookAt(new Vector3(nearestGameObject.transform.position.x, transform.position.y, nearestGameObject.transform.position.z));
 
-                controller.target = nearestGameObject;
+                //controller.target = nearestGameObject;
 
-                if (!stopTrigger)
-                {
-                    controller.TriggerAttack();
-                    stopTrigger = true;
-                }
+                //if (!stopTrigger) 
+                //{
+                //    controller.TriggerAttack();
+                //    stopTrigger = true;
+                //}
 
 
             }
             else
             {
-                if (stopTrigger)
-                {
-                    controller.TriggerAttack();
-                    stopTrigger = false;
-                }
+                //if (stopTrigger)
+                //{
+                //    controller.TriggerAttack();
+                //    stopTrigger = false;
+                //}
                    
             }
         }

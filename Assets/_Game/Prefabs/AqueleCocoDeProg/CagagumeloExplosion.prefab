@@ -68,10 +68,10 @@ MonoBehaviour:
   explosionRay: 3.5
   toxicCloudDuration: 5
   explosionDamage: 20
-  tickDamage: 4
+  tickDamage: 10
   layersToAffect:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 128
 --- !u!1 &5621541509461494714
 GameObject:
   m_ObjectHideFlags: 0
