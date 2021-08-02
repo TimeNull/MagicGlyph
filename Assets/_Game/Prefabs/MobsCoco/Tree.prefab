@@ -115,6 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccedc2a7d7f0e4545a0e4a5bc55d0890, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemy: {fileID: 11400000, guid: fe12fcb09fa81a3439f6095d2487433e, type: 2}
 --- !u!114 &7858201454474339270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,8 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c72583aa4bfeed41918b18003d7f8bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemySO: {fileID: 11400000, guid: fe12fcb09fa81a3439f6095d2487433e, type: 2}
-  characterSO: {fileID: 0}
+  life: {fileID: 11400000, guid: fe12fcb09fa81a3439f6095d2487433e, type: 2}
   OnBecomeVulnerable:
     m_PersistentCalls:
       m_Calls: []
@@ -203,7 +203,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9963f7f5f0bcb2247bc841237e99d8a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 11400000, guid: fe12fcb09fa81a3439f6095d2487433e, type: 2}
 --- !u!195 &7858201454474339274
 NavMeshAgent:
   m_ObjectHideFlags: 0

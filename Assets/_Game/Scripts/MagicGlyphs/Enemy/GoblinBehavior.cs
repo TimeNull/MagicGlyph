@@ -7,7 +7,7 @@ namespace MagicGlyphs.Characters.Enemies
     public class GoblinBehavior : EnemyBehavior //responsable by things that only goblin enemy must do
     {
 
-        
+        // enemyController comes by the base class
 
     }
 }

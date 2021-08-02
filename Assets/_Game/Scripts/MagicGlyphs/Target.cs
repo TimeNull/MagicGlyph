@@ -15,7 +15,7 @@ namespace MagicGlyphs
         private float minDist;
         private int getNearestObject = 0;
         [HideInInspector] public GameObject nearestGameObject;
-        [SerializeField] private float range;
+        [SerializeField] private float range; // ************************************ REMEMBER TO ASSIGN THIS WITH SCRIPTABLE OBJECT
         [SerializeField] private Controller controller;
 
         private bool stopTrigger;
