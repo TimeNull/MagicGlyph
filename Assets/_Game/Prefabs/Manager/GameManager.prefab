@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8997320512846777935}
   - component: {fileID: 8997320512846777920}
   - component: {fileID: 5779158644224453563}
+  - component: {fileID: 7607317502465688735}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -60,3 +61,15 @@ MonoBehaviour:
   fasesQuantityPerWorld: 4
   transitionScene: {fileID: 102900000, guid: cfef2fef9a5373740b88f617c960b6f1, type: 3}
   handler: {fileID: 11400000, guid: e6e9ac0ed742af146a2c1ada9c72a4e3, type: 2}
+--- !u!114 &7607317502465688735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8997320512846777921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bdd24a3eb3a81d4d850fbf816ce80d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
