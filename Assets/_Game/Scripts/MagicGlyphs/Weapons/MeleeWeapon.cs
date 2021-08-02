@@ -7,16 +7,11 @@ namespace MagicGlyphs.Weapons
     public class MeleeWeapon : Weapon
     {
 
-        // ************************************ REMEMBER TO ASSIGN THIS WITH SCRIPTABLE OBJECT
-
-        [SerializeField] private float attackRadius;
-        [SerializeField] private float damage; 
-        [SerializeField] private LayerMask enemyLayer;
-
         Collider[] colliders = new Collider[16]; // limiting to 16 enemies at once
         int hitted;
 
         // Just called the overrides to remember what methods are in the parent class
+
         public override void BeginAttack()
         {
             base.BeginAttack();
@@ -30,14 +25,14 @@ namespace MagicGlyphs.Weapons
         protected override void FixedUpdate()
         {
             base.FixedUpdate();
-            Debug.Log(colliders.Length);
+            
         }
 
         protected override void Attack()
         {
             m_InAttack = false;
 
-            hitted = Physics.OverlapSphereNonAlloc(transform.position, attackRadius, colliders, enemyLayer.value); // NonAlloc: it's basically for microperformance
+            hitted = Physics.OverlapSphereNonAlloc(transform.position, attackRadius, colliders, targetLayer.value); // NonAlloc: it's basically for microperformance
 
            
             for (int i = 0; i < hitted; i++)

@@ -6,6 +6,7 @@ namespace MagicGlyphs
 {
     public class ScriptBostaMobsPegaPlayer : MonoBehaviour
     {
+        [HideInInspector]
         public Transform jogador;
 
         [Header("acha o player")]
@@ -31,7 +32,6 @@ namespace MagicGlyphs
 
             if (jogador)
             {
-
                 if (Vector3.Distance(jogador.position, transform.position) > range || !jogador.gameObject.activeSelf)
                 {
                     jogador = null;

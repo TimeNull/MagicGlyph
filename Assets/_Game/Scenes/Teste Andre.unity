@@ -2610,6 +2610,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38d932cc5dad54b43a38810d963717de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponStats: {fileID: 0}
   attackRadius: 0
   damage: 0
   enemyLayer:
@@ -5775,6 +5776,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38d932cc5dad54b43a38810d963717de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponStats: {fileID: 0}
   attackRadius: 2
   damage: 20
   enemyLayer:
@@ -6863,8 +6865,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c72583aa4bfeed41918b18003d7f8bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemySO: {fileID: 0}
-  characterSO: {fileID: 11400000, guid: 883a9b6da8b1d074488223a2c6d7e69e, type: 2}
+  life: {fileID: 11400000, guid: 883a9b6da8b1d074488223a2c6d7e69e, type: 2}
   OnBecomeVulnerable:
     m_PersistentCalls:
       m_Calls: []
@@ -6977,7 +6978,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character: {fileID: 11400000, guid: 883a9b6da8b1d074488223a2c6d7e69e, type: 2}
-  holder: {fileID: 11400000, guid: fc8789dbfe84dbd43bc6db03c0761260, type: 2}
   rotationSpeed: 100
 --- !u!114 &1063452438
 MonoBehaviour:

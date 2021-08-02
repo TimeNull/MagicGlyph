@@ -3,33 +3,38 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace MagicGlyphs
+namespace MagicGlyphs.Enemies
 {
-    public class GoblinBosta : MonoBehaviour
+    public class GoblinBehavior : EnemyBehavior //responsable by things that only goblin enemy must do
     {
-        Animator anim;
-        ScriptBostaMobsPegaPlayer getPlayer;
+
+        // enemyController comes by the base class
+
         [SerializeField] float distAtaque = 5, cooldownAttack;
         bool inAttack, onCooldown;
-        NavMeshAgent navMesh;
+
 
         // Start is called before the first frame update
-        void Start()
+        protected override void Start()
         {
-            getPlayer = GetComponent<ScriptBostaMobsPegaPlayer>();
-            anim = GetComponent<Animator>();
-            navMesh = GetComponent<NavMeshAgent>();
+            base.Start();
         }
 
         // Update is called once per frame
-        void Update()
+        protected override void Update()
         {
-            if (getPlayer.jogador)
+            base.Update();
+            if (enemyController.targetOnRange)
+                TriggerAttack();
+        }
+
+
+
+        private void TriggerAttack()
+        {
+            if (Vector3.Distance(transform.position, enemyController.target.transform.position) <= distAtaque && !inAttack && !onCooldown)
             {
-                if (Vector3.Distance(transform.position, getPlayer.jogador.transform.position) <= distAtaque && !inAttack && !onCooldown)
-                {
-                    anim.SetTrigger("Attack");
-                }
+                anim.SetTrigger("Attack");
             }
         }
 
@@ -52,5 +57,6 @@ namespace MagicGlyphs
             navMesh.enabled = true;
             StartCoroutine("SetCooldown");
         }
+
     }
 }

@@ -20,5 +20,6 @@ MonoBehaviour:
   triggerDistance: 0
   atkSpeed: 1
   atkDamage: 50
-  attackType: 1
   atkDebuff: 0
+  attackType: 1
+  radiusDetection: 4

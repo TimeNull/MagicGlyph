@@ -22,7 +22,7 @@ namespace MagicGlyphs.ScriptableObjects
         public float atkRange;
 
         //area to start attacking
-        public float triggerDistance;
+        public float radiusDetection;
 
         public float atkSpeed;
         public float atkDamage;
@@ -31,7 +31,7 @@ namespace MagicGlyphs.ScriptableObjects
 
         public virtual void Skill()
         {
-            Debug.Log("Classe pai");
+           // Debug.Log("Classe pai");
         }
 
     }

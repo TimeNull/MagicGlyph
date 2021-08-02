@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MagicGlyphs.Characters.Enemies
+namespace MagicGlyphs.Enemies
 {
-    public class GoblinBehavior : EnemyBehavior //responsable by things that only goblin enemy must do
+    public class MushroomBehavior : EnemyBehavior //responsable by things that only mushroom enemy must do
     {
 
         // enemyController comes by the base class
 
     }
+
 }

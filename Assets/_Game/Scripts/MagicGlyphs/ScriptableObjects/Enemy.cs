@@ -10,11 +10,13 @@ namespace MagicGlyphs.ScriptableObjects
     {
 
         public AttackType attackType;
+        
+
 
         public override void Skill()
         {
-            Debug.Log("Classe filha hehe");
-            Debug.Log(atkDebuff);
+           // Debug.Log("Classe filha hehe");
+           // Debug.Log(atkDebuff);
             
         }
 
