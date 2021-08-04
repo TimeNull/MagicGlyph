@@ -4,7 +4,7 @@ using UnityEngine;
 using MagicGlyphs.ScriptableObjects;
 using MagicGlyphs.Weapons;
 
-namespace MagicGlyphs.Characters
+namespace MagicGlyphs.Player
 {
     [RequireComponent(typeof(PlayerInput))] //project script
     [RequireComponent(typeof(CharacterController))] //unity component
@@ -55,8 +55,6 @@ namespace MagicGlyphs.Characters
             anim = GetComponent<Animator>();
             playerInput = GetComponent<PlayerInput>();
 
-            weapon = GetComponentInChildren<Weapon>(); 
-
             //------ SO inicialization ------
 
             speed = character.speed;
@@ -70,7 +68,6 @@ namespace MagicGlyphs.Characters
 
             Move();
         }
-
 
         private void FixedUpdate()
         {
@@ -164,21 +161,6 @@ namespace MagicGlyphs.Characters
             anim.SetTrigger(AnimatorNames.PlayerAttack);
         }
 
-        //Called by animation
-        public override void AttackBegin()
-        {
-            
-            weapon.BeginAttack();
-
-        }
-
-        //Called by animation
-        public override void AttackEnd()
-        {
-          
-            weapon.EndAttack();
-
-        }
 
         protected override void Damaged()
         {

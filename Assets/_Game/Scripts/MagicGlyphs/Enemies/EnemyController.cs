@@ -18,20 +18,6 @@ namespace MagicGlyphs.Enemies
             radiusDetection = enemy.radiusDetection;
         }
 
-
-        //Called by Animation
-        public override void AttackBegin()
-        {
-            base.AttackBegin();
-
-        }
-
-        //Called by Animation
-        public override void AttackEnd()
-        {
-            base.AttackEnd();
-        }
-
         //Called by base.OnReceiveMessage
         protected override void Damaged()
         {
@@ -47,15 +33,15 @@ namespace MagicGlyphs.Enemies
         protected override void OnTargetRange()
         {
             base.OnTargetRange();
-            Debug.Log(target.name);
+          //  Debug.Log(target.name);
         }
 
         private void OnDisable()
         {
 
-            whatPoolIBelong?.CheckQueue(); // Debug stuff
+          //  whatPoolIBelong?.CheckQueue(); // Debug stuff
             whatPoolIBelong?.FreeObject(gameObject); // Return yourself to the queue when disabled (if this already belongs to one)
-            whatPoolIBelong?.CheckQueue(); // Debug stuff
+          //  whatPoolIBelong?.CheckQueue(); // Debug stuff
         }
     }
 }

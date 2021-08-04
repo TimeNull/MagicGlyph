@@ -15,6 +15,8 @@ namespace MagicGlyphs.Enemies
         protected NavMeshAgent navMesh;
 
 
+
+
         private bool executed = false;
 
         protected virtual void Start()
@@ -29,7 +31,6 @@ namespace MagicGlyphs.Enemies
 
             if (enemyController.targetOnRange)
             {
-                Debug.Log("chamou");
                 Transform targetTransform = enemyController.target.transform;
                 if(navMesh.enabled)
                     navMesh.SetDestination(new Vector3(targetTransform.position.x, transform.position.y, targetTransform.position.z));
@@ -41,7 +42,20 @@ namespace MagicGlyphs.Enemies
                 if (navMesh.enabled)
                     navMesh.Move(Vector3.zero);
             }
+
+            if (enemyController.underForce)
+            {
+                if (navMesh.enabled)
+                    navMesh.enabled = false;
+            } 
+            else if (!enemyController.underForce)
+            {
+                if (!navMesh.enabled)
+                    navMesh.enabled = true;
+            }
         }
+
+ 
 
     }
 }

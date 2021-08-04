@@ -19,7 +19,7 @@ namespace MagicGlyphs.ScriptableObjects
         public float speed;
 
         //attack area
-        public float atkRange;
+        public float atkRadius;
 
         //area to start attacking
         public float radiusDetection;

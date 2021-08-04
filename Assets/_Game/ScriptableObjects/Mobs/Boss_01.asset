@@ -14,12 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Druid
   description: First boss, invoke enemies and attacks in area.
-  maxLife: 1000
+  maxLife: 500
   speed: 10
-  atkRange: 10
-  triggerDistance: 0
+  atkRadius: 2
+  radiusDetection: 4
   atkSpeed: 1
-  atkDamage: 50
+  atkDamage: 1
   atkDebuff: 0
   attackType: 1
-  radiusDetection: 4

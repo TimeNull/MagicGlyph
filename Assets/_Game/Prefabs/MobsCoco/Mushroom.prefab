@@ -121,6 +121,7 @@ MonoBehaviour:
   targetLayer:
     serializedVersion: 2
     m_Bits: 0
+  applyForce: 1
   enemy: {fileID: 11400000, guid: 5523eaa54c09502429e5d7666312549e, type: 2}
 --- !u!114 &1808813821831113464
 MonoBehaviour:

@@ -10,8 +10,9 @@ namespace MagicGlyphs.Enemies
 
         // enemyController comes by the base class
 
-        [SerializeField] float distAtaque = 5, cooldownAttack;
-        bool inAttack, onCooldown;
+        [SerializeField] private float distAtaque = 5, cooldownAttack;
+        private bool inAttack, onCooldown;
+
 
 
         // Start is called before the first frame update
@@ -25,7 +26,7 @@ namespace MagicGlyphs.Enemies
         {
             base.Update();
             if (enemyController.targetOnRange)
-                TriggerAttack();
+                TriggerAttack();   
         }
 
 
@@ -45,6 +46,7 @@ namespace MagicGlyphs.Enemies
             onCooldown = false;
         }
 
+
         public void AttackStartEvent()
         {
             navMesh.enabled = false;
@@ -57,6 +59,7 @@ namespace MagicGlyphs.Enemies
             navMesh.enabled = true;
             StartCoroutine("SetCooldown");
         }
+
 
     }
 }
