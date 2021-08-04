@@ -29,9 +29,58 @@ namespace MagicGlyphs.ScriptableObjects
 
         public Debuff atkDebuff;
 
+
+        
+        float _maxLife;        
+        float _speed;
+
+        //attack area
+        float _atkRange;
+
+        //area to start attacking
+        float _radiusDetection;
+
+        float _atkSpeed;
+        float _atkDamage;
+
+        Debuff _atkDebuff;
+
         public virtual void Skill()
         {
            // Debug.Log("Classe pai");
+        }
+
+        private void OnEnable()
+        {
+            _maxLife = maxLife;
+            _speed = speed;
+            _atkRange = atkRange;
+            _radiusDetection = radiusDetection;
+            _atkSpeed = atkSpeed;
+            _atkDamage = atkDamage;
+            _atkDebuff = atkDebuff;
+
+        }
+
+        public void AddReset()
+        {
+            MagicGlyphs.Player.PlayerController.deathDelegate += Reset;
+        }
+
+        private void OnDisable()
+        {
+            MagicGlyphs.Player.PlayerController.deathDelegate -= Reset;
+        }
+
+        public void Reset()
+        {
+            maxLife = _maxLife;
+            speed = _speed;
+            atkRange = _atkRange;
+            radiusDetection = _radiusDetection;
+            atkSpeed = _atkSpeed;
+            atkDamage = _atkDamage;
+            atkDebuff = _atkDebuff;
         }
 
     }
