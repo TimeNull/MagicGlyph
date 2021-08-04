@@ -24,4 +24,9 @@ namespace MagicGlyphs
     {
         DAMAGED, DEAD
     }
+
+    public enum amplifyType 
+    { 
+        attack, life 
+    }
 }

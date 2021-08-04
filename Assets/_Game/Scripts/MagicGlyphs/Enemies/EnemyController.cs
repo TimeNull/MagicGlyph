@@ -50,6 +50,11 @@ namespace MagicGlyphs.Enemies
             Debug.Log(target.name);
         }
 
+        public void GivePlayerMoney()
+        {
+            CoinsManager.addCoins(Random.Range(1, 7));
+        }
+
         private void OnDisable()
         {
 
