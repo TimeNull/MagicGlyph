@@ -10,7 +10,6 @@ namespace MagicGlyphs
     {
         [SerializeField] private GeneralAttributes life; // Desired object life configuration (Character, Enemy...)
 
-
         private float maxLife;
         public float MaxLife { get => maxLife; }
 
@@ -30,6 +29,8 @@ namespace MagicGlyphs
 
 
         System.Action schedule;
+
+        
 
         private void Start()
         {
@@ -90,11 +91,23 @@ namespace MagicGlyphs
 
             if (_actualLife > maxLife)
                 actualLife = maxLife;
+            OnReset?.Invoke();
         }
 
         public void SetMaxLife(float value)
         {
             maxLife = value;
+            OnReset?.Invoke();
+        }
+
+        public void UpdateLife ()
+        {
+            maxLife = life.maxLife;
+        }
+
+        public void DeathCoins()
+        {
+            CoinsManager.addCoins(Random.Range(1, 7));
         }
 
         void LateUpdate()

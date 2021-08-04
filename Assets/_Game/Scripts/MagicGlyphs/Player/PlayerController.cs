@@ -4,7 +4,9 @@ using UnityEngine;
 using MagicGlyphs.ScriptableObjects;
 using MagicGlyphs.Weapons;
 
-namespace MagicGlyphs.Characters
+public delegate void NewDelegate();
+
+namespace MagicGlyphs.Player
 {
     [RequireComponent(typeof(PlayerInput))] //project script
     [RequireComponent(typeof(CharacterController))] //unity component
@@ -12,6 +14,8 @@ namespace MagicGlyphs.Characters
 
     public class PlayerController : Controller //responsable by things that all characters must do
     {
+        public static NewDelegate deathDelegate, updateStats;
+
         // ------------------- REFERENCES ----------------------------
 
         [SerializeField] private Character character;
@@ -41,10 +45,12 @@ namespace MagicGlyphs.Characters
 
         [SerializeField] private float rotationSpeed;
 
+        
 
         protected override void Start()
         {
             base.Start();
+            character.AddReset();
 
             DontDestroyOnLoad(gameObject);
 
@@ -55,12 +61,11 @@ namespace MagicGlyphs.Characters
             anim = GetComponent<Animator>();
             playerInput = GetComponent<PlayerInput>();
 
-            weapon = GetComponentInChildren<Weapon>(); 
+            weapon = GetComponentInChildren<Weapon>();
 
             //------ SO inicialization ------
 
-            speed = character.speed;
-            radiusDetection = character.radiusDetection;
+            UpdateStats();
 
         }
 
@@ -195,6 +200,11 @@ namespace MagicGlyphs.Characters
             Debug.Log("animação de morreu");
         }
 
+        public void UpdateStats()
+        {
+            speed = character.speed;
+            radiusDetection = character.radiusDetection;
+        }
 
         void Skill()
         {

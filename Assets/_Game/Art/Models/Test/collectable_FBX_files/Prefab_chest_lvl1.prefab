@@ -567,7 +567,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MagicGlyphs.BuyButton, Assembly-CSharp
+        m_TargetAssemblyTypeName: MagicGlyphs.BuyButton, MagicGlyphs
         m_MethodName: HaskCoins
         m_Mode: 1
         m_Arguments:
