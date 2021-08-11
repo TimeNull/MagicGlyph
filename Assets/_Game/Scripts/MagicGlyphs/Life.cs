@@ -87,9 +87,9 @@ namespace MagicGlyphs
 
         public void IncreaseActualLife(float value)
         {
-            float _actualLife = actualLife + value;
+            actualLife += value;
 
-            if (_actualLife > maxLife)
+            if (actualLife > maxLife)
                 actualLife = maxLife;
             OnReset?.Invoke();
         }
@@ -108,6 +108,15 @@ namespace MagicGlyphs
         public void DeathCoins()
         {
             CoinsManager.addCoins(Random.Range(1, 7));
+        }
+
+        public void RegenPlayerWtf(float life)
+        {
+            if (MagicGlyphs.RegenPerKillMobs.canRegen)
+            {
+                Life playerLife = GameObject.FindGameObjectWithTag("Player").GetComponent<Life>();
+                playerLife.IncreaseActualLife(playerLife.maxLife * (life/100));
+            }
         }
 
         void LateUpdate()

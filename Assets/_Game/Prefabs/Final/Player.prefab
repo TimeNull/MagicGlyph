@@ -299,8 +299,8 @@ Transform:
   m_Children:
   - {fileID: 7780215418740405808}
   - {fileID: 3685046582003912523}
-  - {fileID: 2914142173813540665}
   - {fileID: 3757480997493618723}
+  - {fileID: 2914142173813540665}
   - {fileID: 888307749046093627}
   - {fileID: 2487387695156920528}
   m_Father: {fileID: 8205452586718325191}
@@ -3116,6 +3116,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ExplosivePath Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 7707328915379933847, guid: c59f4d0654877854cb9ca719c8d9f266, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8173565153552668914, guid: c59f4d0654877854cb9ca719c8d9f266, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -3530,7 +3534,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6905126811495206865, guid: c8e3694fa97aaca44983642dd2c1447e, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6905126811495206865, guid: c8e3694fa97aaca44983642dd2c1447e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3654,7 +3658,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5475530512054385438, guid: 73210754f8b09304ea3156811f888184, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5475530512054385438, guid: 73210754f8b09304ea3156811f888184, type: 3}
       propertyPath: m_LocalPosition.x

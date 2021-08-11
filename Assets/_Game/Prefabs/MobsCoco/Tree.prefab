@@ -181,10 +181,10 @@ MonoBehaviour:
   OnDeath:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7858201454474339269}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 505153614015907663}
+        m_TargetAssemblyTypeName: MagicGlyphs.Enemies.EnemyController, MagicGlyphs
+        m_MethodName: GivePlayerMoney
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -193,10 +193,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 505153614015907663}
-        m_TargetAssemblyTypeName: MagicGlyphs.Enemies.EnemyController, MagicGlyphs
-        m_MethodName: GivePlayerMoney
-        m_Mode: 1
+      - m_Target: {fileID: 7858201454474339270}
+        m_TargetAssemblyTypeName: MagicGlyphs.Life, MagicGlyphs
+        m_MethodName: RegenPlayerWtf
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 15
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7858201454474339269}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
