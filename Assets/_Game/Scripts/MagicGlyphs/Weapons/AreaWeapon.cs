@@ -45,7 +45,7 @@ namespace MagicGlyphs
 
                 if (aa)
                 {
-                    target = raycastHits[i].transform.GetComponent<Controller>();
+                    raycastHits[i].transform.GetComponent<Controller>().AddForce(knockbackForce, transform.forward.normalized);
                     aa.ApplyDamage(damage);
 
                 }

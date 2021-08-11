@@ -40,25 +40,27 @@ namespace MagicGlyphs.Enemies
         private bool hasExitedRange = false;
         private bool animFlag = false;
 
-        private void Awake()
+
+        protected override void Initialize()
         {
-            enemiesPool.AddObject(5, goblin);
-            enemiesPool.AddObject(3, mushroom);
-            enemiesPool.AddObject(2, tree);
-
-
-
             player = GameObject.FindWithTag("Player").transform;
 
-           // enemiesPool.CheckTable();
+            // enemiesPool.CheckTable();
 
             mobLocation1 = transform.GetChild(4);
             mobLocation2 = transform.GetChild(5);
         }
 
-        protected override void Start()
+        private void Start()
         {
-            base.Start();
+            enemiesPool.AddObject(2, goblin);
+            enemiesPool.AddObject(1, mushroom);
+            enemiesPool.AddObject(2, goblin);
+            enemiesPool.AddObject(1, tree);
+            enemiesPool.AddObject(2, goblin);
+            enemiesPool.AddObject(2, mushroom);
+            enemiesPool.AddObject(2, tree);
+
             StartCoroutine("BossCycle", timeToStart);
         }
 
@@ -237,5 +239,9 @@ namespace MagicGlyphs.Enemies
                 
         }
 
+        public void StopBoss()
+        {
+            bossIsAlive = false;
+        }
     }
 }

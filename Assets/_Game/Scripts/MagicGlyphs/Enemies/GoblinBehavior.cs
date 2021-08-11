@@ -11,53 +11,55 @@ namespace MagicGlyphs.Enemies
         // enemyController comes by the base class
 
         [SerializeField] private float distAtaque = 5, cooldownAttack;
-        private bool inAttack, onCooldown;
+        private bool inAttack, inCooldown;
 
-
-
-        // Start is called before the first frame update
-        protected override void Start()
+        protected override void TriggerAttack()
         {
-            base.Start();
-        }
-
-        // Update is called once per frame
-        protected override void Update()
-        {
-            base.Update();
-            if (enemyController.targetOnRange)
-                TriggerAttack();   
-        }
-
-
-
-        private void TriggerAttack()
-        {
-            if (Vector3.Distance(transform.position, enemyController.target.transform.position) <= distAtaque && !inAttack && !onCooldown)
+            if (Vector3.Distance(transform.position, enemyController.target.transform.position) <= distAtaque)
             {
-                anim.SetTrigger("Attack");
+                if (!inAttack && !inCooldown)
+                    anim.SetTrigger("Attack");
+
+                if (navMesh.enabled)
+                    navMesh.enabled = false;
+
             }
+            else if (!inAttack) 
+            {
+                if (!navMesh.enabled)
+                    navMesh.enabled = true;
+            }
+
         }
 
         IEnumerator SetCooldown()
         {
-            onCooldown = true;
+            inCooldown = true;
             yield return new WaitForSeconds(cooldownAttack);
-            onCooldown = false;
+            inCooldown = false;
         }
 
 
         public void AttackStartEvent()
         {
-            navMesh.enabled = false;
+            //navMesh.enabled = false;
             inAttack = true;
         }
 
         public void AttackEndEvent()
         {
             inAttack = false;
-            navMesh.enabled = true;
+            //navMesh.enabled = true;
             StartCoroutine("SetCooldown");
+        }
+
+        private void OnDisable()
+        {
+
+            navMesh.enabled = true;
+            inAttack = false;
+            inCooldown = false;
+
         }
 
 

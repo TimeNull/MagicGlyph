@@ -143,7 +143,7 @@ namespace MagicGlyphs
 
         public void AddForce(float force, Vector3 attackingDirection)
         {
-            Debug.Log("Chamou");
+            Debug.Log(gameObject.name);
             if (!underForce)
             {
                 UnderForce = true;
@@ -164,8 +164,9 @@ namespace MagicGlyphs
 
         protected virtual void AddingForce()
         {
+
             Vector3 a = Vector3.zero;
-            transform.position = Vector3.SmoothDamp(transform.position, transform.position + (direction * force), ref a, 0.1f);
+            transform.position = Vector3.Lerp(transform.position, transform.position + (direction * force), Time.deltaTime);
         }
 
         // Called by LifeManager
@@ -191,6 +192,13 @@ namespace MagicGlyphs
         protected virtual void Died()
         {
 
+        }
+
+        protected virtual void OnDisable()
+        {
+            force = 0;
+            direction = Vector3.zero;
+            UnderForce = false;
         }
 
     }

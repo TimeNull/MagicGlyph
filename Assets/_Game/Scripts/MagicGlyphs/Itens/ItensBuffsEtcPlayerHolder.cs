@@ -22,7 +22,7 @@ namespace MagicGlyphs
                 ItensPlayerArray.Add(transform.GetChild(i).gameObject);
             }
 
-            DontDestroyOnLoad(this);
+           
         }
 
         void BuyItem() //pega o item que foi sorteado e procura por um com o mesmo ID na lista de itens do player para ativar

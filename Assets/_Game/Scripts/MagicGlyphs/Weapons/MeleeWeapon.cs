@@ -38,10 +38,9 @@ namespace MagicGlyphs.Weapons
             {
                 Life aa = colliders[i].transform.GetComponent<Life>();
                 
-
                 if (aa)
                 {
-                    target = colliders[i].transform.GetComponent<Controller>();
+                    colliders[i].transform.GetComponent<Controller>().AddForce(knockbackForce, transform.forward.normalized);
                     aa.ApplyDamage(damage);
 
                 }

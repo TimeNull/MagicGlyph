@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Tree_01
   description: 
-  maxLife: 200
+  maxLife: 100
   speed: 0
-  atkRange: 10
+  atkRadius: 5
   radiusDetection: 20
   atkSpeed: 5
   atkDamage: 40

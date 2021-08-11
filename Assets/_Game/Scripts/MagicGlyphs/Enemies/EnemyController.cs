@@ -41,12 +41,14 @@ namespace MagicGlyphs.Enemies
             CoinsManager.addCoins(Random.Range(1, 7));
         }
 
-        private void OnDisable()
+        protected override void OnDisable()
         {
-
+            base.OnDisable();
           //  whatPoolIBelong?.CheckQueue(); // Debug stuff
             whatPoolIBelong?.FreeObject(gameObject); // Return yourself to the queue when disabled (if this already belongs to one)
           //  whatPoolIBelong?.CheckQueue(); // Debug stuff
+
+
         }
     }
 }

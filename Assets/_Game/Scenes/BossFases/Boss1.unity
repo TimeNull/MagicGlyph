@@ -18933,6 +18933,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1933423994, guid: 0264cea716317bf48930b0d69bb8c1f7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8997320512846777921, guid: 0264cea716317bf48930b0d69bb8c1f7, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -25065,10 +25069,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToStart: 3
-  invokeCooldown: 20
-  attackCooldown: 20
+  invokeCooldown: 10
+  attackCooldown: 15
   idleCooldown: 2
-  rotationSpeed: 1
+  rotationSpeed: 1.5
   goblin: {fileID: 1417635225218365751, guid: 6bbe20b3e9b9bf443bf78e69d129d55b, type: 3}
   mushroom: {fileID: 1808813821831113469, guid: 0b81b1ad92f3bd748bf1a3d2ac11225f, type: 3}
   tree: {fileID: 7858201454474339269, guid: b73aea9a370c1214f968796aaf6f016b, type: 3}
@@ -25104,10 +25108,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 0.60304195
   m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Center: {x: 0, y: 1, z: 0.10304195}
 --- !u!1 &3901875784544861668
 GameObject:
   m_ObjectHideFlags: 0
@@ -26472,6 +26476,34 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -4.6566126e-10
       objectReference: {fileID: 0}
+    - target: {fileID: 479541827730541506, guid: 486252624a0a5c94fbd4f286cec67c99, type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 479541827730541506, guid: 486252624a0a5c94fbd4f286cec67c99, type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 479541827730541506, guid: 486252624a0a5c94fbd4f286cec67c99, type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 3901874485684378981}
+    - target: {fileID: 479541827730541506, guid: 486252624a0a5c94fbd4f286cec67c99, type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 479541827730541506, guid: 486252624a0a5c94fbd4f286cec67c99, type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: StopBoss
+      objectReference: {fileID: 0}
+    - target: {fileID: 479541827730541506, guid: 486252624a0a5c94fbd4f286cec67c99, type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: MagicGlyphs.Enemies.BossBehavior, MagicGlyphs
+      objectReference: {fileID: 0}
+    - target: {fileID: 479541827730541506, guid: 486252624a0a5c94fbd4f286cec67c99, type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 536176980568925147, guid: 486252624a0a5c94fbd4f286cec67c99, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.23096597
@@ -26639,6 +26671,14 @@ PrefabInstance:
     - target: {fileID: 1410291132788458996, guid: 486252624a0a5c94fbd4f286cec67c99, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1410291132788458996, guid: 486252624a0a5c94fbd4f286cec67c99, type: 3}
+      propertyPath: m_SlopeLimit
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 1410291132788458996, guid: 486252624a0a5c94fbd4f286cec67c99, type: 3}
+      propertyPath: m_StepOffset
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 1473683274096219562, guid: 486252624a0a5c94fbd4f286cec67c99, type: 3}
       propertyPath: m_LocalPosition.x
@@ -26974,7 +27014,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3679953987876652422, guid: 486252624a0a5c94fbd4f286cec67c99, type: 3}
       propertyPath: knockbackForce
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3679953987876652422, guid: 486252624a0a5c94fbd4f286cec67c99, type: 3}
       propertyPath: uniqueFrameAttack
