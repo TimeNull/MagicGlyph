@@ -61,11 +61,12 @@ namespace MagicGlyphs.Player
             anim = GetComponent<Animator>();
             playerInput = GetComponent<PlayerInput>();
 
+
             weapon = GetComponentInChildren<Weapon>();
 
             //------ SO inicialization ------
 
-            UpdateStats();
+           
 
         }
 
@@ -74,8 +75,8 @@ namespace MagicGlyphs.Player
             base.Update();
 
             Move();
+            UpdateStats();
         }
-
 
         private void FixedUpdate()
         {
@@ -153,7 +154,7 @@ namespace MagicGlyphs.Player
                 }
             }
 
-            //cc.Move(velocity * Time.deltaTime);
+            cc.Move(velocity * Time.deltaTime);
 
         }
 
@@ -169,27 +170,12 @@ namespace MagicGlyphs.Player
             anim.SetTrigger(AnimatorNames.PlayerAttack);
         }
 
-        //Called by animation
-        public override void AttackBegin()
-        {
-            
-            weapon.BeginAttack();
-
-        }
-
-        //Called by animation
-        public override void AttackEnd()
-        {
-          
-            weapon.EndAttack();
-
-        }
 
         protected override void Damaged()
         {
             base.Damaged();
             //animation and feedback stuff here
-            Debug.Log("animação de levou dano");
+           // Debug.Log("animação de levou dano");
 
         }
 
@@ -197,7 +183,7 @@ namespace MagicGlyphs.Player
         {
             base.Died();
             //animation and feedback stuff here
-            Debug.Log("animação de morreu");
+          //  Debug.Log("animação de morreu");
         }
 
         public void UpdateStats()

@@ -19,7 +19,7 @@ namespace MagicGlyphs.ScriptableObjects
         public float speed;
 
         //attack area
-        public float atkRange;
+        public float atkRadius;
 
         //area to start attacking
         public float radiusDetection;
@@ -33,9 +33,6 @@ namespace MagicGlyphs.ScriptableObjects
         
         float _maxLife;        
         float _speed;
-
-        //attack area
-        float _atkRange;
 
         //area to start attacking
         float _radiusDetection;
@@ -54,7 +51,6 @@ namespace MagicGlyphs.ScriptableObjects
         {
             _maxLife = maxLife;
             _speed = speed;
-            _atkRange = atkRange;
             _radiusDetection = radiusDetection;
             _atkSpeed = atkSpeed;
             _atkDamage = atkDamage;
@@ -76,7 +72,6 @@ namespace MagicGlyphs.ScriptableObjects
         {
             maxLife = _maxLife;
             speed = _speed;
-            atkRange = _atkRange;
             radiusDetection = _radiusDetection;
             atkSpeed = _atkSpeed;
             atkDamage = _atkDamage;

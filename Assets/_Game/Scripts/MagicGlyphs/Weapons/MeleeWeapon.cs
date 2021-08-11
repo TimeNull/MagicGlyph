@@ -30,7 +30,6 @@ namespace MagicGlyphs.Weapons
 
         protected override void Attack()
         {
-            m_InAttack = false;
 
             hitted = Physics.OverlapSphereNonAlloc(transform.position, attackRadius, colliders, targetLayer.value); // NonAlloc: it's basically for microperformance
 
@@ -38,10 +37,10 @@ namespace MagicGlyphs.Weapons
             for (int i = 0; i < hitted; i++)
             {
                 Life aa = colliders[i].transform.GetComponent<Life>();
-
+                
                 if (aa)
                 {
-
+                    colliders[i].transform.GetComponent<Controller>().AddForce(knockbackForce, transform.forward.normalized);
                     aa.ApplyDamage(damage);
 
                 }
@@ -60,7 +59,7 @@ namespace MagicGlyphs.Weapons
                 for (int i = 0; i < hitted; i++)
                 {
                     Gizmos.color = Color.red;
-                    Gizmos.DrawWireSphere(colliders[i].transform.position, attackRadius/ 1.5f);
+                    Gizmos.DrawWireSphere(colliders[i].transform.position, attackRadius);
 
                 }
             }

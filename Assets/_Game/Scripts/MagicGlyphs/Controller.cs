@@ -10,20 +10,23 @@ namespace MagicGlyphs
     {
 
         protected Animator anim;
-
         private GameObject Target;
-
         private Collider[] targetsOnRange;
 
-        private bool TargetOnRange;
+        private bool UnderForce;
+        public bool underForce { get => UnderForce; }
 
+        protected float force;
+        protected Vector3 direction;
+
+        private bool TargetOnRange;
         protected float radiusDetection; // define on child classes 
 
         [SerializeField] private int maxNumberOfTargets;
         [SerializeField] private LayerMask targetLayer;
+        [SerializeField] private bool applyForce;
 
         public GameObject target { get => Target;}
-
         public bool targetOnRange { get => TargetOnRange; }
 
         [Header("References")]
@@ -35,11 +38,19 @@ namespace MagicGlyphs
             Target = null;
             anim = GetComponent<Animator>();
             targetsOnRange = new Collider[maxNumberOfTargets];
+            weapon = GetComponentInChildren<Weapon>();
         }
 
         protected virtual void Update()
         {
             TargetDetection();
+
+
+            if (underForce && applyForce)
+            {
+                Debug.Log("adicionando força");
+                AddingForce();
+            }
         }
 
         private void TargetDetection()
@@ -110,10 +121,16 @@ namespace MagicGlyphs
             // for player controller finish attack
         }
 
+        public virtual void OnHit()
+        {
+
+        }
+
         // Called by animation
         public virtual void AttackBegin()
         {
             // attack condition and start attack animation (trigger once)
+            weapon.BeginAttack();
             
         }
 
@@ -121,6 +138,35 @@ namespace MagicGlyphs
         public virtual void AttackEnd()
         {
             // attack condition and end attack animation (trigger onde)
+            weapon.EndAttack();
+        }
+
+        public void AddForce(float force, Vector3 attackingDirection)
+        {
+            Debug.Log(gameObject.name);
+            if (!underForce)
+            {
+                UnderForce = true;
+                StartCoroutine(ForceCooldown());
+            }
+
+            this.force = force;
+            this.direction = attackingDirection;
+
+        }
+
+        IEnumerator ForceCooldown()
+        {
+            yield return new WaitForSeconds(0.5f);
+            UnderForce = false;
+        }
+
+
+        protected virtual void AddingForce()
+        {
+
+            Vector3 a = Vector3.zero;
+            transform.position = Vector3.Lerp(transform.position, transform.position + (direction * force), Time.deltaTime);
         }
 
         // Called by LifeManager
@@ -146,6 +192,13 @@ namespace MagicGlyphs
         protected virtual void Died()
         {
 
+        }
+
+        protected virtual void OnDisable()
+        {
+            force = 0;
+            direction = Vector3.zero;
+            UnderForce = false;
         }
 
     }

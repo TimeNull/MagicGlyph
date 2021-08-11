@@ -9,6 +9,7 @@ namespace MagicGlyphs
     {
         int enemiesQtde;
         public static GMDelegate defeatLevel;
+
         bool alreadyChecked;
 
         void Update()
@@ -18,7 +19,7 @@ namespace MagicGlyphs
             if (enemiesQtde <= 0)
             {
                 if (!alreadyChecked)
-                    defeatLevel();
+                    defeatLevel?.Invoke();
 
                 alreadyChecked = true;
             }

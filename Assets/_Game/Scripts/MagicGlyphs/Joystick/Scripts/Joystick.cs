@@ -93,6 +93,9 @@ namespace EasyJoystick {
 
       public Vector3 Direction()
         {
+            if(ArrowKeysSimulationEnabled)
+                return new Vector3(Horizontal(), 0, Vertical());
+
             return new Vector3(normalizedPoint.x, 0, normalizedPoint.y);
         }
 
