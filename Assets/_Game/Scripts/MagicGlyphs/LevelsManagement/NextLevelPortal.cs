@@ -13,7 +13,7 @@ namespace MagicGlyph
 
         private void Start()
         {
-            DontDestroyOnLoad(PortalObj);
+            DontDestroyOnLoad(transform.parent.gameObject);
             PortalObj.transform.position = GameObject.FindGameObjectWithTag("PortalPoint").transform.position;
 
             this.GetComponent<Collider>().enabled = false;

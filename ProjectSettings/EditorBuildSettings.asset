@@ -5,9 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/_Game/Scenes/Teste Maranza.unity
-    guid: 746dd41234712fd489c2e86ea577ac42
+  - enabled: 1
+    path: Assets/_Game/Scenes/Menu.unity
+    guid: 31d5d145ddbeb7945b20a812e17a8498
+  - enabled: 1
+    path: Assets/_Game/Scenes/Lobby.unity
+    guid: 5f8e3d8094308e54fa6aa2dd686cdf41
   - enabled: 1
     path: Assets/_Game/Scenes/World1/W1L1.unity
     guid: 240a8ffdcfda4f74c988516fa090f7f1
@@ -38,7 +41,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Game/Scenes/LoadingScene.unity
     guid: cfef2fef9a5373740b88f617c960b6f1
-  - enabled: 1
-    path: Assets/_Game/Scenes/Teste Andre.unity
-    guid: 6dce34333dfab104c9725385dec286cb
   m_configObjects: {}

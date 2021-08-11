@@ -10,6 +10,6 @@ namespace MagicGlyphs.ScriptableObjects
         
         public Skill[] skills = new Skill[1];
         
-
+        
     }
 }

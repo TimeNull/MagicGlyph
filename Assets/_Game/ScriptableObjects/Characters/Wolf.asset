@@ -16,8 +16,8 @@ MonoBehaviour:
   description: The glyph of the Warrior, incarnated as a cute Wolf.
   maxLife: 200
   speed: 5
-  atkRange: 2
-  radiusDetection: 4
+  atkRadius: 1.5
+  radiusDetection: 2.5
   atkSpeed: 10
   atkDamage: 20
   atkDebuff: 0

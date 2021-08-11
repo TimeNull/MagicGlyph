@@ -2,24 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using MagicGlyphs.ScriptableObjects;
+using MagicGlyphs.Enemies;
 
 namespace MagicGlyphs.Weapons
 {
     public abstract class Weapon : MonoBehaviour
     {
-   
-
+        [SerializeField] protected float knockbackForce;
+        [SerializeField] private bool uniqueFrameAttack;
+        
         [SerializeField] protected GeneralAttributes weaponStats;
         [SerializeField] protected LayerMask targetLayer;
         protected float damage;
         protected float attackRadius;
         protected bool m_InAttack;
+        protected Controller[] target;
+        protected bool m_aplyingForce;
 
 
         protected virtual void Start()
         {
             damage = weaponStats.atkDamage;
-            attackRadius = weaponStats.atkRange;
+            attackRadius = weaponStats.atkRadius;
+            target = new Controller[5];
         }
 
 
@@ -31,13 +36,23 @@ namespace MagicGlyphs.Weapons
         public virtual void EndAttack()
         {
             m_InAttack = false;
+            m_aplyingForce = false;
         }
 
         protected virtual void FixedUpdate()
         {
             if (m_InAttack)
             {
+                if (uniqueFrameAttack)
+                    m_InAttack = false;
                 Attack();
+
+                if (!m_aplyingForce)
+                {
+                    m_aplyingForce = true;
+                    ApplyForce();
+                }
+                    
             }
         }
 
@@ -46,6 +61,9 @@ namespace MagicGlyphs.Weapons
 
         }
 
+        protected virtual void ApplyForce()
+        {
 
+        }
     }
 }

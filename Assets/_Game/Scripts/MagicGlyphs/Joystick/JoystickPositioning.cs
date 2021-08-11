@@ -5,7 +5,6 @@ using TouchScript;
 
 public class JoystickPositioning : MonoBehaviour
 {
-    private GameObject joystick;
     private GameObject container;
 
     [SerializeField] private bool turnOffJoystickWhenReleaseTouch;
@@ -14,9 +13,10 @@ public class JoystickPositioning : MonoBehaviour
 
     private void Start()
     {
-        joystick = GameObject.FindWithTag("Joystick");
-        container = joystick.transform.GetChild(0).gameObject;
-       // container?.SetActive(false);
+        container = transform.GetChild(0).gameObject;
+        
+        if (turnOffJoystickWhenReleaseTouch)
+            container?.SetActive(false);
     }
 
     private void OnEnable()
@@ -39,15 +39,26 @@ public class JoystickPositioning : MonoBehaviour
 
     void ScreenTouch(object sender, PointerEventArgs e)
     {
+       
         
-        //container?.SetActive(true);
-        container.transform.position = e.Pointers[0].Position;
+        if(e.Pointers[0].Position.y < 250)
+        {
+            if (turnOffJoystickWhenReleaseTouch)
+            {
+                if(container) container.SetActive(true);
+            }
+            container.transform.position = e.Pointers[0].Position;
+        }
+           
 
     }
 
     void ScreenRelease(object sender, PointerEventArgs e)
     {
-        if(turnOffJoystickWhenReleaseTouch)
-            container?.SetActive(false);
+        if (turnOffJoystickWhenReleaseTouch)
+        {
+            if (container) container.SetActive(false);
+        }
+            
     }
 }
