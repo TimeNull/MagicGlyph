@@ -48,7 +48,7 @@ namespace MagicGlyphs
 
             if (underForce && applyForce)
             {
-                Debug.Log("adicionando força");
+                //Debug.Log("adicionando força");
                 AddingForce();
             }
         }
@@ -143,7 +143,6 @@ namespace MagicGlyphs
 
         public void AddForce(float force, Vector3 attackingDirection)
         {
-            Debug.Log(gameObject.name);
             if (!underForce)
             {
                 UnderForce = true;

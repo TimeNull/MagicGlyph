@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &7952935139923076414
+--- !u!114 &1488627872942693063
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9,12 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1843227266190018307}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0af1d47674d0271479fc179db472f285, type: 3}
+  m_Script: {fileID: 11500000, guid: 2b72bc4191e46f34aad85172b55c5144, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  amplify: 0
-  increaseAmount: 0
 --- !u!1001 &5299435124745036370
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24,7 +21,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5773356636919162193, guid: 42143b8f6a028dc40a33161d0dac3856, type: 3}
       propertyPath: m_Name
-      value: RegenPerKill
+      value: RegenPerKill Variant
       objectReference: {fileID: 0}
     - target: {fileID: 5773356636919162193, guid: 42143b8f6a028dc40a33161d0dac3856, type: 3}
       propertyPath: m_IsActive
