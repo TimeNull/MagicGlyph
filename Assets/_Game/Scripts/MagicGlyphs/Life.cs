@@ -124,6 +124,15 @@ namespace MagicGlyphs
             CoinsManager.addCoins(Random.Range(1, 7));
         }
 
+        public void RegenPlayerWtf(float life)
+        {
+            if (MagicGlyphs.RegenPerKillMobs.canRegen)
+            {
+                Life playerLife = GameObject.FindGameObjectWithTag("Player").GetComponent<Life>();
+                playerLife.IncreaseActualLife(playerLife.maxLife * (life/100));
+            }
+        }
+
         void LateUpdate()
         {
             if (schedule != null)

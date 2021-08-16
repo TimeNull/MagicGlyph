@@ -32,7 +32,7 @@ public class CanvasTransition : MonoBehaviour
     {
         if (image.color.a < 1)
         {
-            Debug.Log("chamou");
+            //Debug.Log("chamou");
             color.a *= 1.035f;
             image.color = color;
         }

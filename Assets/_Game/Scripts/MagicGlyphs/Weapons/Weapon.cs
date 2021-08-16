@@ -55,6 +55,11 @@ namespace MagicGlyphs.Weapons
             }
         }
 
+        public virtual void AmplifyAttack(float quantity)
+        {
+            damage += quantity;
+        }
+
         protected virtual void Attack()
         {
 
