@@ -64,7 +64,15 @@ namespace MagicGlyphs.Enemies
             StartCoroutine("BossCycle", timeToStart);
         }
 
-      
+        private void OnEnable()
+        {
+            Player.PlayerController.deathDelegate += StopBoss;
+        }
+
+        private void OnDisable()
+        {
+            Player.PlayerController.deathDelegate -= StopBoss;
+        }
 
         private IEnumerator BossCycle()
         {

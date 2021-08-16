@@ -25,7 +25,7 @@ namespace MagicGlyphs.UI
 
         private void Start()
         {
-            DontDestroyOnLoad(gameObject);
+          //  DontDestroyOnLoad(gameObject);
             
         }
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using MagicGlyphs.Weapons;
+using MagicGlyphs.ScriptableObjects;
 
 namespace MagicGlyphs
 {
@@ -13,6 +14,8 @@ namespace MagicGlyphs
         private GameObject Target;
         private Collider[] targetsOnRange;
 
+        
+
         private bool UnderForce;
         public bool underForce { get => UnderForce; }
 
@@ -20,6 +23,8 @@ namespace MagicGlyphs
         protected Vector3 direction;
 
         private bool TargetOnRange;
+
+        public float speed { get; set; }
         protected float radiusDetection; // define on child classes 
 
         [SerializeField] private int maxNumberOfTargets;

@@ -25,7 +25,6 @@ namespace MagicGlyphs.Player
 
         // ------------------- PLAYER PARAMETERS ----------------------
 
-        private float speed;
 
         const float gravity = -9.84f;
         const float groundedRayDistance = 1f;
@@ -50,9 +49,8 @@ namespace MagicGlyphs.Player
         protected override void Start()
         {
             base.Start();
-            character.AddReset();
 
-            DontDestroyOnLoad(gameObject);
+           // DontDestroyOnLoad(gameObject);
 
             //------ Components inicialization ------
 
@@ -65,7 +63,7 @@ namespace MagicGlyphs.Player
             weapon = GetComponentInChildren<Weapon>();
 
             //------ SO inicialization ------
-
+            UpdateStats();
            
 
         }
@@ -75,7 +73,6 @@ namespace MagicGlyphs.Player
             base.Update();
 
             Move();
-            UpdateStats();
         }
 
         private void FixedUpdate()
@@ -182,10 +179,12 @@ namespace MagicGlyphs.Player
         protected override void Died()
         {
             base.Died();
+            deathDelegate?.Invoke();
             //animation and feedback stuff here
           //  Debug.Log("animação de morreu");
         }
 
+        //Called by SOLoader
         public void UpdateStats()
         {
             speed = character.speed;

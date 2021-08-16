@@ -10,11 +10,17 @@ namespace MagicGlyphs.Enemies
 
         [SerializeField] private Enemy enemy;
 
-        public HarmlessPooler whatPoolIBelong;
+        public HarmlessPooler whatPoolIBelong; 
 
         protected override void Start()
         {
             base.Start();
+            UpdateStats();  
+        }
+
+        public void UpdateStats()
+        {
+            speed = enemy.speed;
             radiusDetection = enemy.radiusDetection;
         }
 
