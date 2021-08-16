@@ -20,6 +20,7 @@ namespace MagicGlyphs
             switch (amplify)
             {
                 case amplifyType.attack:
+                    player.GetComponent<MagicGlyphs.Weapons.Weapon>().AmplifyAttack(increaseAmount);
                     break;
                 case amplifyType.life:
                     player.GetComponent<Life>().SetMaxLife(player.GetComponent<Life>().MaxLife + increaseAmount);

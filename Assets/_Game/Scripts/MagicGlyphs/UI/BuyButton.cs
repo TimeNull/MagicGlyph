@@ -22,7 +22,7 @@ namespace MagicGlyphs
 
         public void HaskCoins()
         {
-            Debug.Log("Funciona");
+            //Debug.Log("Funciona");
             CoinsManager.addCoins(100);
         }
 

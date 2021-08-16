@@ -18,7 +18,7 @@ namespace MagicGlyphs
 
             for (int i = 0; i < hitted; i++)
             {
-                Debug.Log(collider[i].name);
+                //Debug.Log(collider[i].name);
                 Gizmos.color = Color.red;
                 
                 Gizmos.DrawWireSphere(collider[i].transform.position, radius / 5);

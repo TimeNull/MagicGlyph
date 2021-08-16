@@ -48,7 +48,7 @@ namespace MagicGlyphs
                    
                     for (int i = 0; i < hitted; ++i)
                     {
-                        Debug.Log(results[i].transform);
+                        //Debug.Log(results[i].transform);
                         
                         Gizmos.color = Color.red;
                         Gizmos.DrawRay(transform.position + offset, transform.forward * results[i].distance);

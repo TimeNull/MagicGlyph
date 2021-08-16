@@ -6,16 +6,27 @@ namespace MagicGlyphs
 {
     public class AreaDamageScript : MonoBehaviour
     {
-        // Start is called before the first frame update
-        void Start()
+        [SerializeField] float radius, tickVelocity, damage;
+        [SerializeField] LayerMask layersToAffect;
+        Collider[] mobsToDamage;
+
+        private void OnEnable()
         {
-        
+            InvokeRepeating("DealDamage", 0f, tickVelocity);
         }
 
-        // Update is called once per frame
-        void Update()
+
+        void DealDamage()
         {
-        
+            mobsToDamage = Physics.OverlapSphere(transform.position, radius, layersToAffect);
+
+            if (mobsToDamage.Length > 0)
+            {
+                foreach(Collider obj in mobsToDamage)
+                {
+                    obj.gameObject.GetComponent<Life>().ApplyDamage(damage);
+                }
+            }
         }
     }
 }

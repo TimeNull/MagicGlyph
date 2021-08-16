@@ -20,7 +20,7 @@ namespace MagicGlyphs
         {
             AnimatorStateInfo stateInfo = anim.GetCurrentAnimatorStateInfo(0);
 
-            Debug.Log(anim.applyRootMotion);
+            //Debug.Log(anim.applyRootMotion);
 
             // made this var to more clearly see the condition
 

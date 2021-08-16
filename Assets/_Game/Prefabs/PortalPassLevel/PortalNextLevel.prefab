@@ -332,27 +332,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Itens:
-  - Item: {fileID: 8611973211849785587, guid: ee92a33285773d4409226887329f6cc3, type: 3}
+  - Item: {fileID: 8669708230050058175, guid: ee92a33285773d4409226887329f6cc3, type: 3}
     ImageItem: {fileID: -2980712377497353079, guid: 74eb3f143a2c7bc43bbf5e81f25af15a, type: 3}
     PriceItem: 15
     descricao: Area damage
-  - Item: {fileID: 8883244649618910001, guid: 24442c018806d424a9e0497d614827ce, type: 3}
+  - Item: {fileID: 650568953593892560, guid: 4089bfd899b2b994e9b7db150c9f9d92, type: 3}
     ImageItem: {fileID: 4749367379176292346, guid: 74eb3f143a2c7bc43bbf5e81f25af15a, type: 3}
     PriceItem: 10
     descricao: Amplify Attack
-  - Item: {fileID: 2274034512800525481, guid: c59f4d0654877854cb9ca719c8d9f266, type: 3}
+  - Item: {fileID: 5868900257575554298, guid: c59f4d0654877854cb9ca719c8d9f266, type: 3}
     ImageItem: {fileID: -537459264968920275, guid: 74eb3f143a2c7bc43bbf5e81f25af15a, type: 3}
     PriceItem: 20
     descricao: Damage path
-  - Item: {fileID: 3588170244953294640, guid: 73210754f8b09304ea3156811f888184, type: 3}
+  - Item: {fileID: 7773264076937473814, guid: 73210754f8b09304ea3156811f888184, type: 3}
     ImageItem: {fileID: -9144960104466704823, guid: 74eb3f143a2c7bc43bbf5e81f25af15a, type: 3}
     PriceItem: 10
     descricao: Amplify life
-  - Item: {fileID: 3185864312330909325, guid: c8e3694fa97aaca44983642dd2c1447e, type: 3}
+  - Item: {fileID: 9209619084173073369, guid: c8e3694fa97aaca44983642dd2c1447e, type: 3}
     ImageItem: {fileID: 3247288509954160731, guid: 74eb3f143a2c7bc43bbf5e81f25af15a, type: 3}
     PriceItem: 20
     descricao: Magical Missile
-  - Item: {fileID: 1859288056885173819, guid: b78312721cfee904db459e8c82dd45ac, type: 3}
+  - Item: {fileID: 1843227266190018307, guid: b78312721cfee904db459e8c82dd45ac, type: 3}
     ImageItem: {fileID: 2409810756578143877, guid: 74eb3f143a2c7bc43bbf5e81f25af15a, type: 3}
     PriceItem: 15
     descricao: Vampirism
