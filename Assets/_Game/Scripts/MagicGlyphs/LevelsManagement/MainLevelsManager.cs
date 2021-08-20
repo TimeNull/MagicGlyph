@@ -27,8 +27,7 @@ public class MainLevelsManager : MonoBehaviour
         NextLevelEvent = NextLevel;
         ResetRunEvent = ResetRun;
 
-        DontDestroyOnLoad(this.gameObject); //para passar o objeto de cena em cena !tomara que não dê problema no futuro!
-
+      
         availableLevels = new List<int>();
 
         for (int i = 0; i < handler.Worlds[actualWorld].levels.Length; i++)

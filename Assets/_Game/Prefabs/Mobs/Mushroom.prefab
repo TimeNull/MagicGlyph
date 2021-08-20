@@ -161,6 +161,7 @@ MonoBehaviour:
     m_Bits: 128
   applyForce: 1
   enemy: {fileID: 11400000, guid: 5523eaa54c09502429e5d7666312549e, type: 2}
+  damageMaterial: {fileID: 2100000, guid: 5a115b395d61485488a8051b6fe5176d, type: 2}
 --- !u!114 &1808813821831113464
 MonoBehaviour:
   m_ObjectHideFlags: 0

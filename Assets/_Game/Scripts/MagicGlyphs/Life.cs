@@ -34,10 +34,7 @@ namespace MagicGlyphs
 
         private void Start()
         {
-            life.Skill();
-            maxLife = life.maxLife;
-
-            actualLife = maxLife;
+            UpdateStats();
 
             OnReset?.Invoke();
 
@@ -45,6 +42,13 @@ namespace MagicGlyphs
                 Debug.LogWarning("You need to add LifeBar Script 'SetMaxLifeUI' and 'SetActualLifeUI' methods in the OnReset Unity Event for properly Life UI feedback!");
 
 
+        }
+
+        public void UpdateStats()
+        {
+            maxLife = life.maxLife;
+
+            actualLife = maxLife;
         }
 
         private void Update()
@@ -91,19 +95,29 @@ namespace MagicGlyphs
 
             if (actualLife > maxLife)
                 actualLife = maxLife;
+
             OnReset?.Invoke();
         }
+
+        public void SetActualLife(float value)
+        {
+            actualLife = value;
+            OnReset?.Invoke();
+        }
+
+        public void IncreaseMaxLife(float value)
+        {
+            maxLife += value;
+
+            OnReset?.Invoke();
+        } 
 
         public void SetMaxLife(float value)
         {
             maxLife = value;
             OnReset?.Invoke();
         }
-
-        public void UpdateLife ()
-        {
-            maxLife = life.maxLife;
-        }
+        
 
         public void DeathCoins()
         {

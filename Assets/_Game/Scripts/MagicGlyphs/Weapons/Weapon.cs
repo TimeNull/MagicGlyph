@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using MagicGlyphs.ScriptableObjects;
-using MagicGlyphs.Enemies;
 
 namespace MagicGlyphs.Weapons
 {

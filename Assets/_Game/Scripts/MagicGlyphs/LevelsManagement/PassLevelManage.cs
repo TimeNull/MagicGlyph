@@ -1,21 +1,41 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public delegate void GMDelegate();
 namespace MagicGlyphs
 {
     public class PassLevelManage : MonoBehaviour
     {
-        int enemiesQtde;
-        public static GMDelegate defeatLevel;
+        private static int enemiesQtde;
 
-        bool alreadyChecked;
+        public static event GMDelegate defeatLevel;
 
-        void Update()
+        private static bool alreadyChecked;
+
+        private void OnEnable()
         {
-            enemiesQtde = GameObject.FindGameObjectsWithTag("Enemy").Length;
+            SceneManager.sceneLoaded += OnSceneLoaded;
+        }
 
+        private void OnDisable()
+        {
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+        }
+
+        private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        {
+            if (scene.buildIndex == 0 || scene.buildIndex == 1)
+                return;
+
+            enemiesQtde = 0;
+            enemiesQtde = GameObject.FindGameObjectsWithTag("Enemy").Length;
+        }
+
+        public static void CheckEnemies() //called by Died() method on enemy controller
+        {
+            enemiesQtde--;
             if (enemiesQtde <= 0)
             {
                 if (!alreadyChecked)

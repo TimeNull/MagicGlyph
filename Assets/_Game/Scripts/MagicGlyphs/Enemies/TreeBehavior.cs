@@ -10,11 +10,6 @@ namespace MagicGlyphs.Enemies
         [SerializeField] GameObject granade;
         [SerializeField] float coolDownTime;
 
-        protected override void FollowTarget()
-        {
-            //tree does not follow player
-        }
-
         protected override void TriggerAttack()
         {
             if (!inCoolDown)

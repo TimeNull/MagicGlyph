@@ -13,16 +13,14 @@ namespace MagicGlyph
 
         private void Start()
         {
-            DontDestroyOnLoad(transform.parent.gameObject);
+
             PortalObj.transform.position = GameObject.FindGameObjectWithTag("PortalPoint").transform.position;
 
             this.GetComponent<Collider>().enabled = false;
-
-            MagicGlyphs.PassLevelManage.defeatLevel -= ActivePortal;
-            MagicGlyphs.PassLevelManage.defeatLevel += ActivePortal;
+   
         }
 
-        void ActivePortal()
+        private void ActivePortal()
         {
             this.GetComponent<Collider>().enabled = true;
             particlesPortal.SetActive(true);
@@ -36,6 +34,15 @@ namespace MagicGlyph
             {
                 MainLevelsManager.NextLevelEvent();
             }
+        }
+
+        private void OnEnable()
+        {
+            MagicGlyphs.PassLevelManage.defeatLevel += ActivePortal;
+        }
+        private void OnDisable()
+        {
+            MagicGlyphs.PassLevelManage.defeatLevel -= ActivePortal;
         }
     }
 }

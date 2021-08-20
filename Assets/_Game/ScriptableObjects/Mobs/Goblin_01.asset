@@ -15,8 +15,8 @@ MonoBehaviour:
   name: Goblin_01
   description: The first enemy. The easiest
   maxLife: 40
-  speed: 0
-  atkRange: 5
+  speed: 7
+  atkRadius: 0
   radiusDetection: 20
   atkSpeed: 5
   atkDamage: 5
