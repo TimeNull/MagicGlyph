@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using MagicGlyphs.Weapons;
 
-namespace MagicGlyphs
+namespace MagicGlyphs.Weapons
 {
     public class AreaWeapon : Weapon
     {

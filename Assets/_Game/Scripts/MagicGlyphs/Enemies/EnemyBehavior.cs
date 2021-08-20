@@ -22,11 +22,18 @@ namespace MagicGlyphs.Enemies
             anim = GetComponent<Animator>();
             navMesh = GetComponent<NavMeshAgent>();
             Initialize();
+            
         }
 
         protected virtual void Initialize()
         {
 
+        }
+
+        private void Start()
+        {
+            Debug.Log(enemyController.speed);
+            navMesh.speed = enemyController.speed;
         }
 
         protected virtual void Update()
@@ -75,6 +82,8 @@ namespace MagicGlyphs.Enemies
         {
 
         }
+
+        
 
 
     }
