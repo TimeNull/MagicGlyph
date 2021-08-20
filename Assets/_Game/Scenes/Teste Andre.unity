@@ -9551,7 +9551,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 607369523705533233, guid: 486252624a0a5c94fbd4f286cec67c99, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 839637547846632612, guid: 486252624a0a5c94fbd4f286cec67c99, type: 3}
       propertyPath: m_IsActive
@@ -9601,10 +9601,18 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1458849712}
+    - target: {fileID: 3563622023659594148, guid: 486252624a0a5c94fbd4f286cec67c99, type: 3}
+      propertyPath: m_Name
+      value: MissileChild
+      objectReference: {fileID: 0}
     - target: {fileID: 3911916409753597829, guid: 486252624a0a5c94fbd4f286cec67c99, type: 3}
       propertyPath: increaseAmount
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 4693386504401673339, guid: 486252624a0a5c94fbd4f286cec67c99, type: 3}
+      propertyPath: dontDestroyObj
+      value: 
+      objectReference: {fileID: 2006064718}
     - target: {fileID: 5468552131251282488, guid: 486252624a0a5c94fbd4f286cec67c99, type: 3}
       propertyPath: m_Name
       value: RegenPerKill(ok)
@@ -9648,6 +9656,18 @@ PrefabInstance:
     - target: {fileID: 7375860882672586594, guid: 486252624a0a5c94fbd4f286cec67c99, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 8054142866958774290, guid: 486252624a0a5c94fbd4f286cec67c99, type: 3}
+      propertyPath: velocity
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8054142866958774290, guid: 486252624a0a5c94fbd4f286cec67c99, type: 3}
+      propertyPath: missileCooldown
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8202703199049550623, guid: 486252624a0a5c94fbd4f286cec67c99, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8205452586718325191, guid: 486252624a0a5c94fbd4f286cec67c99, type: 3}
       propertyPath: m_RootOrder
@@ -10296,6 +10316,10 @@ PrefabInstance:
     - target: {fileID: 5221756909025781195, guid: 6c41e151f3090694e96dc8d8b1ae7f4b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7252016274229332863, guid: 6c41e151f3090694e96dc8d8b1ae7f4b, type: 3}
+      propertyPath: m_Name
+      value: ScriptChestContact
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c41e151f3090694e96dc8d8b1ae7f4b, type: 3}

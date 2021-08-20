@@ -6,15 +6,23 @@ namespace MagicGlyphs
 {
     public class MagicalMissiles : MonoBehaviour
     {
-        [SerializeField] float damage, velocity, rangeDetection, attackColisionRange;
-        [SerializeField] Transform root;
+        [SerializeField] float damage, velocity, rangeDetection, attackColisionRange, missileCooldown;
+        public Transform root;
         [SerializeField] LayerMask layersToCollide;
+
         GameObject target;
-        Collider[] objectsOnRange;
+        Collider[] objectsOnRange = new Collider[10], objectsAttack = new Collider[10];
         float minDist;
         int numObjectsDetected;
-        bool canAttack;
 
+        bool canAttack = true;
+
+        MeshRenderer meshObj;
+
+        private void Start()
+        {
+            meshObj = GetComponent<MeshRenderer>();
+        }
 
         private void Update()
         {
@@ -22,57 +30,60 @@ namespace MagicGlyphs
             {
                 if (target == null || !target.activeSelf)
                 {
-                    ReturnToPlayer();
                     target = FindTarget();
                 }
                 else
                 {
-                    Debug.Log("target: " + target);
                     Attack();
                 }
             }
-            else
-            {
-                ReturnToPlayer();
-            }
         }
 
-        void ReturnToPlayer()
+
+        IEnumerator Cooldown()
         {
-            transform.position = Vector3.MoveTowards(transform.position, root.position, velocity * Time.deltaTime);
-
-            transform.LookAt(root);
-
-            if (Vector3.Distance(transform.position, root.position) < 0.1f)
-            {
-                canAttack = true;
-            }
+            meshObj.enabled = false;
+            canAttack = false;
+            yield return new WaitForSeconds(missileCooldown);
+            meshObj.enabled = true;
+            canAttack = true;
         }
 
         void Attack()
         {
+            if (!meshObj.enabled)
+            {
+                transform.position = root.position;
+                meshObj.enabled = true;
+            }
+
             transform.position = Vector3.MoveTowards(transform.position, target.transform.position, velocity * Time.deltaTime);
 
             transform.LookAt(target.transform);
 
-            numObjectsDetected = Physics.OverlapSphereNonAlloc(transform.position, attackColisionRange, objectsOnRange, layersToCollide);
+            numObjectsDetected = Physics.OverlapSphereNonAlloc(transform.position, attackColisionRange, objectsAttack, layersToCollide);
             if(numObjectsDetected > 0)
             {
-                for (int i = 0; i <= numObjectsDetected; i++) {
-                    objectsOnRange[i].gameObject.GetComponent<Life>().ApplyDamage(damage);
+                for (int i = 0; i < numObjectsDetected; i++) {
+                    objectsAttack[i].gameObject.GetComponent<Life>().ApplyDamage(damage);
                     target = null;                    
                 }
-                canAttack = false;
+                StartCoroutine("Cooldown");
             }
 
         }
 
         GameObject FindTarget()
         {
+            if (meshObj.enabled)
+            {
+                meshObj.enabled = false;
+            }
+
             numObjectsDetected = Physics.OverlapSphereNonAlloc(root.position, rangeDetection, objectsOnRange, layersToCollide);
             if (numObjectsDetected > 0)
             {                
-                for (int i = 0; i <= numObjectsDetected; i++)
+                for (int i = 0; i < numObjectsDetected; i++)
                 {
                     if (i == 0)
                     {
@@ -91,7 +102,6 @@ namespace MagicGlyphs
             }
             else
             {
-                Debug.Log("fazendo");
                 return null;
             }
             
