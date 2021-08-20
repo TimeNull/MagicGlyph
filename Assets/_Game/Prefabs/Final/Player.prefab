@@ -2736,7 +2736,9 @@ MonoBehaviour:
     m_Bits: 64
   applyForce: 0
   character: {fileID: 11400000, guid: 883a9b6da8b1d074488223a2c6d7e69e, type: 2}
-  rotationSpeed: 80
+  playerMesh: {fileID: 8842313738979435510}
+  damageMaterial: {fileID: 2100000, guid: 5a115b395d61485488a8051b6fe5176d, type: 2}
+  rotationSpeed: 10
 --- !u!114 &2911134589361150769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2850,7 +2852,7 @@ CharacterController:
   m_Height: 2
   m_Radius: 0.5
   m_SlopeLimit: 45
-  m_StepOffset: 0.1
+  m_StepOffset: 0.5
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}
@@ -3420,6 +3422,11 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 7431876217595644406, guid: d0d288a1f39483b43983800af7f0ff63, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d0d288a1f39483b43983800af7f0ff63, type: 3}
+--- !u!224 &216167153853391938 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 7431876217595644402, guid: d0d288a1f39483b43983800af7f0ff63, type: 3}
+  m_PrefabInstance: {fileID: 7339933816477167024}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &5942342600837404033 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4011546142057314353, guid: d0d288a1f39483b43983800af7f0ff63, type: 3}
@@ -3431,11 +3438,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 936601420b821004f9e141a71375b6ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!224 &216167153853391938 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 7431876217595644402, guid: d0d288a1f39483b43983800af7f0ff63, type: 3}
-  m_PrefabInstance: {fileID: 7339933816477167024}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8620712800342673640
 PrefabInstance:
   m_ObjectHideFlags: 0

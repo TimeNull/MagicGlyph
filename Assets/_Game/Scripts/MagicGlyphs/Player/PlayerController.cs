@@ -19,6 +19,10 @@ namespace MagicGlyphs.Player
         // ------------------- REFERENCES ----------------------------
 
         [SerializeField] private Character character;
+        [SerializeField] private SkinnedMeshRenderer playerMesh;
+        [SerializeField] private Material damageMaterial;
+
+        private Material mainMaterial;
 
         private PlayerInput playerInput;
         private CharacterController cc;
@@ -50,7 +54,6 @@ namespace MagicGlyphs.Player
         {
             base.Start();
 
-           // DontDestroyOnLoad(gameObject);
 
             //------ Components inicialization ------
 
@@ -64,6 +67,8 @@ namespace MagicGlyphs.Player
 
             //------ SO inicialization ------
             UpdateStats();
+
+            mainMaterial = playerMesh.material;
            
 
         }
@@ -89,11 +94,12 @@ namespace MagicGlyphs.Player
             
             base.OnTargetRange();
 
-            transform.LookAt(new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z));
+            Utility.rotateTowards(transform, new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z), 5f);
+            //transform.LookAt(new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z));
            
             if (!m_attack)
             {
-                TriggerAttack();
+                TriggerAttack(true);
                 m_attack = true;
             }
             
@@ -106,7 +112,7 @@ namespace MagicGlyphs.Player
 
             if (m_attack)
             {
-                TriggerAttack();
+                TriggerAttack(false);
                 m_attack = false;
             }
         }
@@ -162,9 +168,9 @@ namespace MagicGlyphs.Player
         }
 
         //Called by Target
-        public void TriggerAttack()
+        public void TriggerAttack(bool state)
         {
-            anim.SetTrigger(AnimatorNames.PlayerAttack);
+            anim.SetBool(AnimatorNames.PlayerAttack, state);
         }
 
 
@@ -172,8 +178,17 @@ namespace MagicGlyphs.Player
         {
             base.Damaged();
             //animation and feedback stuff here
+            StartCoroutine(ChangeMaterial());
+
            // Debug.Log("animação de levou dano");
 
+        }
+
+        IEnumerator ChangeMaterial()
+        {
+            playerMesh.material = damageMaterial;
+            yield return new WaitForSeconds(0.1f);
+            playerMesh.material = mainMaterial;
         }
 
         protected override void Died()

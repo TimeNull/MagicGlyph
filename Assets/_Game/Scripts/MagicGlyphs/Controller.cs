@@ -37,6 +37,8 @@ namespace MagicGlyphs
         [Header("References")]
         protected Weapon weapon;
 
+
+
         protected virtual void Start()
         {
             TargetOnRange = false;

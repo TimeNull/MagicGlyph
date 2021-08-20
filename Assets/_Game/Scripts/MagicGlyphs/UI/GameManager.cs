@@ -5,8 +5,15 @@ using UnityEngine.SceneManagement;
 
 namespace MagicGlyphs.UI
 {
-    public class SceneController : MonoBehaviour
+    public sealed class GameManager : MonoBehaviour 
     {
+        public static GameManager gameManager { get; private set; } // singleton (just for experimentation)
+
+        [Space(10f)]
+        [SerializeField] private GameObject player;
+        [SerializeField] private GameObject cameras;
+        [SerializeField] private GameObject portal;
+        [Space(20f)]
         [SerializeField] private GameObject transition;
         [SerializeField] private GameObject menu;
         [SerializeField] private GameObject pause;
@@ -18,17 +25,23 @@ namespace MagicGlyphs.UI
 
         private int targetIndex;
 
+        private void Awake()
+        {
+            if (gameManager != null && gameManager != this)
+            {
+                Destroy(this.gameObject);
+            }
+            else
+            {
+                gameManager = this;
+            }
+            DontDestroyOnLoad(gameObject);
+        }
+
         public enum Canvas
         {
             WIN, LOSE, MENU, PAUSEICON
         }
-
-        private void Start()
-        {
-          //  DontDestroyOnLoad(gameObject);
-            
-        }
-
         private void OnEnable()
         {
             CanvasTransition.transitionEnded += TransitionEnded;
@@ -53,7 +66,12 @@ namespace MagicGlyphs.UI
             GoToScene(targetIndex);
         }
 
-        private void Check()
+        public void GoToScene(int index)
+        {
+            SceneManager.LoadScene(index);
+        }
+
+        private void Check() // reset active canvas
         {
             if (menu.activeSelf)
                 menu.SetActive(false);
@@ -65,12 +83,7 @@ namespace MagicGlyphs.UI
                 lose.SetActive(false);
         }
 
-        public void GoToScene(int index)
-        {
-            SceneManager.LoadScene(index);
-        }
-
-        public void ActiveCanvas(Canvas canvas)
+        public void ActiveCanvas(Canvas canvas)// active specific canvas
         {
             switch (canvas)
             {
@@ -84,18 +97,17 @@ namespace MagicGlyphs.UI
                     break;
                 case Canvas.MENU:
                     menu.SetActive(true);
+                    pauseIcon.SetActive(false);
                     break;
                 case Canvas.PAUSEICON:
                     pauseIcon.SetActive(true);
                     break;
 
                 default:
-                    pause.SetActive(true);
                     break;
             }
         }
 
-       
         public void Pause(bool pause)
         {
             if (pause && Time.timeScale != 0)
@@ -127,10 +139,18 @@ namespace MagicGlyphs.UI
             switch (scene.buildIndex)
             {
                 case 0:
+                    if(cameras.activeSelf) cameras.SetActive(false);
+                    if (player.activeSelf) player.SetActive(false);
+                    if (portal.activeSelf) portal.SetActive(false);
                     ActiveCanvas(Canvas.MENU);
                     if (joystick) joystick = null;
                     break;
                 case 1:
+                    player.SetActive(true);
+                    cameras.SetActive(true);
+                    portal.SetActive(true);
+                    break;
+                case 2:
                     ActiveCanvas(Canvas.PAUSEICON);
                     break;
 

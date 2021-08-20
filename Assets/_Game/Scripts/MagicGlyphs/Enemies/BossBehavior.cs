@@ -10,10 +10,10 @@ namespace MagicGlyphs.Enemies
         // enemyController comes by the base class
 
         [SerializeField] private float timeToStart = 3f;
-        [SerializeField] private float invokeCooldown = 20f;
-        [SerializeField] private float attackCooldown = 5f;
+        [SerializeField] private float invokeCooldown = 10f;
+        [SerializeField] private float attackCooldown = 15f;
         [SerializeField] private float idleCooldown = 2f;
-        [SerializeField] private float rotationSpeed = 100f;
+        [SerializeField] private float rotationSpeed = 1.5f;
 
         private Transform player;
 
@@ -76,6 +76,11 @@ namespace MagicGlyphs.Enemies
 
         private IEnumerator BossCycle()
         {
+            while (!player)
+            {
+                player = GameObject.FindWithTag("Player").transform;
+                yield return null;
+            }
 
             while (bossIsAlive)
             {
