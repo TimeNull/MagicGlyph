@@ -39,6 +39,9 @@ EditorBuildSettings:
     path: Assets/_Game/Scenes/World1/W1L9.unity
     guid: 8355d5c3a7058e84fa1e72b22d073786
   - enabled: 1
+    path: Assets/_Game/Scenes/BossFases/Boss1.unity
+    guid: 47b20f217e96d31448b567402c6de748
+  - enabled: 1
     path: Assets/_Game/Scenes/LoadingScene.unity
     guid: cfef2fef9a5373740b88f617c960b6f1
   m_configObjects: {}

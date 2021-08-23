@@ -42,6 +42,7 @@ namespace MagicGlyphs.Enemies
         public void AttackEndEvent()
         {
             Instantiate(explosion, transform.position, Quaternion.identity);
+            enemyController.ReceiveMessage(Message.DEAD);
             gameObject.SetActive(false);
         }
 

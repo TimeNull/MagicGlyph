@@ -366,7 +366,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 137.1
+  m_fontSize: 136.55
   m_fontSizeBase: 130
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3706,7 +3706,7 @@ GameObject:
   - component: {fileID: 2926282904973268476}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: GameManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3765,6 +3765,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e23e8a793e52562478c8ec3dadd4f58c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  cameras: {fileID: 0}
+  portal: {fileID: 0}
   transition: {fileID: 4006613557072817722}
   menu: {fileID: 1933423994}
   pause: {fileID: 84200427529807329}

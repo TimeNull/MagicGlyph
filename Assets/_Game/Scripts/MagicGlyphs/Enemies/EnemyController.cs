@@ -13,13 +13,18 @@ namespace MagicGlyphs.Enemies
 
         private Material mainMaterial;
         private MeshRenderer enemyMesh;
+        private bool alreadyDied;
 
         public HarmlessPooler whatPoolIBelong;
 
         private void Awake()
         {
             UpdateStats();
-            enemyMesh = GetComponent<MeshRenderer>();
+            
+            if (!TryGetComponent(out enemyMesh))
+            {
+                enemyMesh = GetComponentInChildren<MeshRenderer>();
+            }
         }
 
         protected override void Start()
@@ -55,7 +60,7 @@ namespace MagicGlyphs.Enemies
         {
             //animation
             //calling the enemies left method need to be here, because the unityevent on life script does not support taking via inspector objects from other scenes
-            //also if I want I could delay the Disable of this object due to animation stuff, so I can't put this on disable too, because would delay the actual checking
+            //also if I want I could delay the Disable of this object due to animation stuff
             PassLevelManage.CheckEnemies();
         }
 
@@ -70,10 +75,11 @@ namespace MagicGlyphs.Enemies
             CoinsManager.addCoins(Random.Range(1, 7));
         }
 
+
         protected override void OnDisable()
         {
-            base.OnDisable();
-          //  whatPoolIBelong?.CheckQueue(); // Debug stuff
+            base.OnDisable(); 
+            //  whatPoolIBelong?.CheckQueue(); // Debug stuff
             whatPoolIBelong?.FreeObject(gameObject); // Return yourself to the queue when disabled (if this already belongs to one)
           //  whatPoolIBelong?.CheckQueue(); // Debug stuff
 

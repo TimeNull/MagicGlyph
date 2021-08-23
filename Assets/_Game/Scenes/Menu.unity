@@ -10093,11 +10093,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5221756909025781194, guid: 6c41e151f3090694e96dc8d8b1ae7f4b, type: 3}
       propertyPath: m_Name
-      value: PortalNextLevel (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 5221756909025781194, guid: 6c41e151f3090694e96dc8d8b1ae7f4b, type: 3}
-      propertyPath: m_IsActive
-      value: 0
+      value: PortalNextLevel
       objectReference: {fileID: 0}
     - target: {fileID: 5221756909025781195, guid: 6c41e151f3090694e96dc8d8b1ae7f4b, type: 3}
       propertyPath: m_RootOrder
@@ -19715,6 +19711,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8205452586718325191, guid: 486252624a0a5c94fbd4f286cec67c99, type: 3}
   m_PrefabInstance: {fileID: 394947670}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1148177100 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5221756910305043158, guid: 6c41e151f3090694e96dc8d8b1ae7f4b, type: 3}
+  m_PrefabInstance: {fileID: 465746764}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2e7c36f5100b19479b5672d551ae437, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1196743882
 GameObject:
   m_ObjectHideFlags: 0
@@ -24518,12 +24525,20 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 0.28198242
       objectReference: {fileID: 0}
+    - target: {fileID: 7607317502465688735, guid: 0264cea716317bf48930b0d69bb8c1f7, type: 3}
+      propertyPath: _portal
+      value: 
+      objectReference: {fileID: 1148177100}
     - target: {fileID: 7928040664133368723, guid: 0264cea716317bf48930b0d69bb8c1f7, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8997320512846777921, guid: 0264cea716317bf48930b0d69bb8c1f7, type: 3}
       propertyPath: m_Name
+      value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 8997320512846777921, guid: 0264cea716317bf48930b0d69bb8c1f7, type: 3}
+      propertyPath: m_TagString
       value: GameManager
       objectReference: {fileID: 0}
     - target: {fileID: 8997320512846777935, guid: 0264cea716317bf48930b0d69bb8c1f7, type: 3}

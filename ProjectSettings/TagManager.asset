@@ -8,6 +8,9 @@ TagManager:
   - Joystick
   - FxTemporaire
   - PortalPoint
+  - GameManager
+  - Portal
+  - PlayerPoint
   layers:
   - Default
   - TransparentFX
