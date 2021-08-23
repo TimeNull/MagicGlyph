@@ -8,11 +8,20 @@ namespace MagicGlyphs
 {
     public class PassLevelManage : MonoBehaviour
     {
-        private static int enemiesQtde;
+        public static int enemiesQtde;
 
         public static event GMDelegate defeatLevel;
 
-        private static bool alreadyChecked;
+        private static bool bossLevel;
+        
+        [SerializeField] private NextLevelPortal _portal;
+
+        private static NextLevelPortal portal;
+
+        private void Awake()
+        {
+            portal = _portal;
+        }
 
         private void OnEnable()
         {
@@ -29,23 +38,43 @@ namespace MagicGlyphs
             if (scene.buildIndex == 0 || scene.buildIndex == 1)
                 return;
 
+            if (scene.buildIndex == 11)
+            {
+                bossLevel = true;
+            }
+
             enemiesQtde = 0;
-            enemiesQtde = GameObject.FindGameObjectsWithTag("Enemy").Length;
+
+            if (!bossLevel)
+            {   
+                enemiesQtde = GameObject.FindGameObjectsWithTag("Enemy").Length;
+            }
+            else
+            {
+                enemiesQtde = 2;
+            }
+
+            CheckEnemies();
         }
 
         public static void CheckEnemies() //called by Died() method on enemy controller
         {
+            Debug.Log(enemiesQtde);
             enemiesQtde--;
+            Debug.Log(enemiesQtde);
+
             if (enemiesQtde <= 0)
             {
-                if (!alreadyChecked)
+                if (!bossLevel)
+                {
                     defeatLevel?.Invoke();
-
-                alreadyChecked = true;
-            }
-            else
-            {
-                alreadyChecked = false;
+                    portal.ActivatePortal();
+                }
+                else
+                {
+                    GameManager.gameManager.DisableObjects();
+                    GameManager.gameManager.ActiveCanvas((int)GameManager.CanvasName.WIN);
+                }
             }
         }
     }

@@ -211,6 +211,7 @@ namespace MagicGlyphs.Enemies
         //called by anim event
         public void InvokeStart()
         {
+            PassLevelManage.enemiesQtde += 2;
             enemiesPool.GetObject().transform.position = mobLocation1.position;
             enemiesPool.GetObject().transform.position = mobLocation2.position;
 

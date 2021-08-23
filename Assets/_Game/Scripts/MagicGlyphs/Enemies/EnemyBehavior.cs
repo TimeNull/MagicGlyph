@@ -32,7 +32,6 @@ namespace MagicGlyphs.Enemies
 
         private void Start()
         {
-            Debug.Log(enemyController.speed);
             navMesh.speed = enemyController.speed;
         }
 

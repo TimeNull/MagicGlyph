@@ -6,12 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class CanvasTransition : MonoBehaviour
 {
-    private Image image;
-    private Color color;
+    private static Image image;
+    private static Color color;
 
     public static event GMDelegate transitionEnded;
 
-    private bool fadeIn = true, fadeOut = false;
+    private static bool fadeIn = true, fadeOut = false;
 
     private void Awake()
     {
@@ -39,31 +39,36 @@ public class CanvasTransition : MonoBehaviour
         else
         {
             fadeIn = false;
+            SceneManager.sceneLoaded += Switch;
             transitionEnded?.Invoke();
         }
     }
 
     private void FadeOut()
     {
+       
         if (image.color.a > 0.01f)
         {
             color.a /= 1.01f;
             image.color = color;
         }
         else
-        {
+        {   
             fadeOut = false;
+            fadeIn = true;
             gameObject.SetActive(false);
         }
     }
 
     private void Switch(Scene scene, LoadSceneMode mode)
     {
+        Debug.Log("chamou switch");
         fadeOut = true;
     }
 
     private void OnEnable()
     {
+        
         SceneManager.sceneLoaded += Switch;
     }
 
