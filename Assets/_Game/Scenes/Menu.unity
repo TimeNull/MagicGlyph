@@ -24521,24 +24521,12 @@ PrefabInstance:
       propertyPath: cameras
       value: 
       objectReference: {fileID: 311192731}
-    - target: {fileID: 3302189565100710844, guid: 0264cea716317bf48930b0d69bb8c1f7, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0.28198242
-      objectReference: {fileID: 0}
     - target: {fileID: 7607317502465688735, guid: 0264cea716317bf48930b0d69bb8c1f7, type: 3}
       propertyPath: _portal
       value: 
       objectReference: {fileID: 1148177100}
-    - target: {fileID: 7928040664133368723, guid: 0264cea716317bf48930b0d69bb8c1f7, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8997320512846777921, guid: 0264cea716317bf48930b0d69bb8c1f7, type: 3}
       propertyPath: m_Name
-      value: GameManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 8997320512846777921, guid: 0264cea716317bf48930b0d69bb8c1f7, type: 3}
-      propertyPath: m_TagString
       value: GameManager
       objectReference: {fileID: 0}
     - target: {fileID: 8997320512846777935, guid: 0264cea716317bf48930b0d69bb8c1f7, type: 3}
