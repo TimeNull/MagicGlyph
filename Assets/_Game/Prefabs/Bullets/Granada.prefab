@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  maxHeight: 6
+  maxHeight: 4
   damage: 15
   range: 0.5
   layersToAffect:

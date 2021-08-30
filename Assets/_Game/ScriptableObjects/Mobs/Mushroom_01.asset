@@ -16,8 +16,8 @@ MonoBehaviour:
   description: Slow and poison damage.
   maxLife: 100
   speed: 5
-  atkRange: 20
-  radiusDetection: 10
+  atkRadius: 0
+  radiusDetection: 20
   atkSpeed: 2
   atkDamage: 20
   atkDebuff: 0
