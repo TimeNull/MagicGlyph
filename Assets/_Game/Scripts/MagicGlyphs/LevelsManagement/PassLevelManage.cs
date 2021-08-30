@@ -43,6 +43,9 @@ namespace MagicGlyphs
                 bossLevel = true;
             }
 
+            if (portal != null)
+                portal.DeactivatePortal();
+
             enemiesQtde = 0;
 
             if (!bossLevel)
@@ -51,10 +54,9 @@ namespace MagicGlyphs
             }
             else
             {
-                enemiesQtde = 2;
+                enemiesQtde = 1;
             }
 
-           // CheckEnemies();
         }
 
         public static void CheckEnemies() //called by Died() method on enemy controller

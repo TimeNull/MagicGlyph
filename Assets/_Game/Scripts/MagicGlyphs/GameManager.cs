@@ -20,6 +20,7 @@ namespace MagicGlyphs
         [SerializeField] private GameObject win;
         [SerializeField] private GameObject lose;
         [SerializeField] private GameObject pauseIcon;
+        Vector3 playerPoint;
 
         private GameObject joystick;
 
@@ -48,6 +49,12 @@ namespace MagicGlyphs
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 GoToScene(11);
+            }
+
+            if (Input.GetKeyDown(KeyCode.B))
+            {
+                Debug.Log("leeeel");
+                player.transform.position = playerPoint;
             }
         }
 
@@ -174,7 +181,8 @@ namespace MagicGlyphs
             if(scene.buildIndex != 0 && scene.buildIndex != 1 && scene.buildIndex != 12)
             {
                 ActiveCanvas((int)CanvasName.PAUSEICON);
-                player.transform.position = GameObject.FindWithTag("PlayerPoint").transform.position;
+                playerPoint = GameObject.FindWithTag("PlayerPoint").transform.position;
+                player.transform.position = playerPoint;
             }
                
         }
