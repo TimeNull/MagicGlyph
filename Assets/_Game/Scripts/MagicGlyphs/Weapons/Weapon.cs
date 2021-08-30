@@ -10,6 +10,8 @@ namespace MagicGlyphs.Weapons
         [SerializeField] protected float knockbackForce;
         [SerializeField] private bool uniqueFrameAttack;
         
+        public bool frameAttack { get { return uniqueFrameAttack; } set { uniqueFrameAttack = value;  } } //done by player skill only
+
         [SerializeField] protected GeneralAttributes weaponStats;
         [SerializeField] protected LayerMask targetLayer;
         protected float damage;

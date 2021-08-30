@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Goblin_01
   description: The first enemy. The easiest
-  maxLife: 40
+  maxLife: 200
   speed: 7
   atkRadius: 0
   radiusDetection: 20

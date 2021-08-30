@@ -8,22 +8,23 @@ namespace MagicGlyphs.Player
     public class PlayerInput : MonoBehaviour
     {
         private Joystick joystick;
-        private bool m_skill;
-        [SerializeField] private float m_skill_wait;
-        public bool Skill { get => m_skill; }
+        public bool m_skill { get; private set; }
 
         private void Start()
         {
             joystick = GameObject.FindWithTag("Joystick").GetComponent<Joystick>();
         }
 
-
-        private void Update()
+        public void StartSkill()
         {
-            if (true) // condition to 
-            {
-                StartCoroutine(SkillWait());
-            }
+            m_skill = true;
+            StartCoroutine(SkillStartEnd());
+        }
+
+        private IEnumerator SkillStartEnd() // called by skill buttom, sets m_skill to true by one frame
+        {
+            yield return null;
+            m_skill = false;
         }
 
         public Vector3 Direction()
@@ -40,15 +41,6 @@ namespace MagicGlyphs.Player
         {
             return joystick.Vertical();
         }
-
-
-        IEnumerator SkillWait()
-        {
-            m_skill = true;
-            yield return m_skill_wait;
-            m_skill = false;
-        }
-
 
     }
 }

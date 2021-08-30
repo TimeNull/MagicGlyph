@@ -54,7 +54,7 @@ namespace MagicGlyphs
                 enemiesQtde = 2;
             }
 
-            CheckEnemies();
+           // CheckEnemies();
         }
 
         public static void CheckEnemies() //called by Died() method on enemy controller

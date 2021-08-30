@@ -15,7 +15,9 @@ namespace MagicGlyphs
         //Player triggers
         public static readonly int PlayerAttack = Animator.StringToHash("attack");
         public static readonly int PlayerIdle = Animator.StringToHash("idle");
+        public static readonly int PlayerBackRun = Animator.StringToHash("backrun");
         public static readonly int PlayerRun = Animator.StringToHash("run");
+        public static readonly int PlayerSkill = Animator.StringToHash("skill");
 
         //Goblin triggers
         public static readonly int GoblinAttack = Animator.StringToHash("Attack");
