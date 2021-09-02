@@ -13,6 +13,8 @@ namespace MagicGlyphs
         public static event GMDelegate defeatLevel;
 
         private static bool bossLevel;
+
+        private static bool defeated;
         
         [SerializeField] private NextLevelPortal _portal;
 
@@ -56,7 +58,6 @@ namespace MagicGlyphs
             {
                 enemiesQtde = 1;
             }
-
         }
 
         public static void CheckEnemies() //called by Died() method on enemy controller
@@ -69,8 +70,8 @@ namespace MagicGlyphs
             {
                 if (!bossLevel)
                 {
-                    defeatLevel?.Invoke();
                     portal.ActivatePortal();
+                    defeated = true;
                 }
                 else
                 {
@@ -79,5 +80,20 @@ namespace MagicGlyphs
                 }
             }
         }
+
+        private void Update()
+        {
+            if (defeated)
+            {
+                defeated = false;
+                Invoke("DefeatLevel", 0.5f);
+            }
+        }
+
+        private void DefeatLevel()
+        {
+            defeatLevel?.Invoke();
+        }
+
     }
 }

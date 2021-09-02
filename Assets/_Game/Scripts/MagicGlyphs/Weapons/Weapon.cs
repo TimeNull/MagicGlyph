@@ -19,6 +19,7 @@ namespace MagicGlyphs.Weapons
         protected bool m_InAttack;
         protected Controller[] target;
         protected bool m_aplyingForce;
+        protected bool m_underSkill;
 
 
         protected virtual void Start()
@@ -38,6 +39,11 @@ namespace MagicGlyphs.Weapons
         {
             m_InAttack = false;
             m_aplyingForce = false;
+            if (m_underSkill)
+            {
+                damage = weaponStats.atkDamage;
+                m_underSkill = false;
+            }
         }
 
         protected virtual void FixedUpdate()
@@ -55,6 +61,12 @@ namespace MagicGlyphs.Weapons
                 }
                     
             }
+        }
+
+        public void SkillDamage(float value)
+        {
+            m_underSkill = true;
+            damage = value;
         }
 
         public virtual void AmplifyAttack(float quantity)

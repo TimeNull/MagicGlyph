@@ -40,9 +40,11 @@ namespace MagicGlyphs.Player
 
         // Prevents animation triggers from being called 17 times in a row 
 
-        private bool m_move;
+        private bool m_move = false;
         private bool m_attack = false;
         private bool m_skill = false;
+       // private bool m_switch = false;
+        private bool _frameAttack;
 
 
 
@@ -54,6 +56,7 @@ namespace MagicGlyphs.Player
         protected override void Start()
         {
             base.Start();
+            
 
             //------ Components inicialization ------
 
@@ -64,6 +67,7 @@ namespace MagicGlyphs.Player
 
 
             weapon = GetComponentInChildren<Weapon>();
+            _frameAttack = weapon.frameAttack;
 
             //------ SO inicialization ------
             UpdateStats();
@@ -142,23 +146,21 @@ namespace MagicGlyphs.Player
                     Quaternion toRotation = Quaternion.LookRotation(playerInput.Direction(), Vector3.up);
                     transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed);
                 }
-                
+
+                //if (targetOnRange)
+                //{
+                //    m_switch = true;
+                //}
 
                 if (checkVelocity.magnitude > 0.1f && !m_move && !m_skill)
                 {
                     m_move = true;
 
-                    if (targetOnRange)
-                    {
-                        if (transform.forward == -target.transform.forward)
-                            anim.SetTrigger(AnimatorNames.PlayerRun);
-                        else
-                            anim.SetTrigger(AnimatorNames.PlayerBackRun);
-                    
-                            
-                    }
-                    else
-                        anim.SetTrigger(AnimatorNames.PlayerRun);
+                    anim.SetTrigger(AnimatorNames.PlayerRun);
+                    //if (transform.forward == -target.transform.forward)
+                    //    anim.SetTrigger(AnimatorNames.PlayerRun);
+                    //else
+                    //    anim.SetTrigger(AnimatorNames.PlayerBackRun);      
                 }
             }
             else
@@ -221,12 +223,17 @@ namespace MagicGlyphs.Player
 
         void Skill()
         {
+            
             anim.SetTrigger(AnimatorNames.PlayerSkill);
         }
 
-        private bool _frameAttack;
+        
         public void SkillStart()
         {
+            weapon.SkillDamage(1);
+            if (anim.GetBool(AnimatorNames.PlayerAttack))
+                anim.SetBool(AnimatorNames.PlayerAttack, false);
+
             _frameAttack = weapon.frameAttack;
             if (weapon.frameAttack)
                 weapon.frameAttack = false;
@@ -235,7 +242,8 @@ namespace MagicGlyphs.Player
 
         public void SkillEnd()
         {
-            if(weapon.frameAttack != _frameAttack)
+            m_attack = false;
+            if (weapon.frameAttack != _frameAttack)
                 weapon.frameAttack = _frameAttack;
             m_skill = false;
         }

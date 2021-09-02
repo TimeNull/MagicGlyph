@@ -13,6 +13,7 @@ namespace MagicGlyphs
         [SerializeField] private GameObject player;
         [SerializeField] private GameObject cameras;
         [SerializeField] private GameObject portal;
+        [SerializeField] private GameObject portalScripts;
         [Space(20f)]
         [SerializeField] private GameObject transition;
         [SerializeField] private GameObject menu;
@@ -53,7 +54,7 @@ namespace MagicGlyphs
 
             if (Input.GetKeyDown(KeyCode.B))
             {
-                Debug.Log("leeeel");
+               
                 player.transform.position = playerPoint;
             }
         }
@@ -72,7 +73,7 @@ namespace MagicGlyphs
 
         public void GoToSceneWithTransition(int index)
         {
-            Debug.Log("called");
+           
             targetIndex = index;
             transition.SetActive(true);
         }
@@ -158,14 +159,15 @@ namespace MagicGlyphs
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
-            Debug.Log("chamou onscene loaded");
+            
             if (!joystick) joystick = GameObject.FindWithTag("Joystick");
 
             switch (scene.buildIndex)
             {
                 case 0:
-                    portal.SetActive(true);
-                    if(cameras.activeSelf) cameras.SetActive(false);
+                    portalScripts.GetComponent<NextLevelPortal>().ActivatePortal();
+                    portalScripts.GetComponent<NextLevelPortal>().DeactivatePortal();
+                    if (cameras.activeSelf) cameras.SetActive(false);
                     if (player.activeSelf) player.SetActive(false);
                     if (portal.activeSelf) portal.SetActive(false);
                     ActiveCanvas((int)CanvasName.MENU);
@@ -178,7 +180,7 @@ namespace MagicGlyphs
 
             }
 
-            if(scene.buildIndex != 0 && scene.buildIndex != 1 && scene.buildIndex != 12)
+            if(scene.buildIndex != 0 && scene.buildIndex != 12)
             {
                 ActiveCanvas((int)CanvasName.PAUSEICON);
                 playerPoint = GameObject.FindWithTag("PlayerPoint").transform.position;
