@@ -10,21 +10,29 @@ namespace MagicGlyphs.Player
         private Joystick joystick;
         public bool m_skill { get; private set; }
 
+        private bool dirty = false;
+         
         private void Start()
         {
             joystick = GameObject.FindWithTag("Joystick").GetComponent<Joystick>();
         }
 
-        public void StartSkill()
+        public void StartSkill() // called by skill buttom, sets m_skill to true by one frame
         {
-            m_skill = true;
-            StartCoroutine(SkillStartEnd());
+            if (!dirty)
+            {
+                m_skill = true;
+                dirty = true;
+                StartCoroutine(SkillStartEnd());
+            }
         }
 
-        private IEnumerator SkillStartEnd() // called by skill buttom, sets m_skill to true by one frame
+        private IEnumerator SkillStartEnd() 
         {
             yield return null;
             m_skill = false;
+            yield return new WaitForSeconds(3);
+            dirty = false;
         }
 
         public Vector3 Direction()

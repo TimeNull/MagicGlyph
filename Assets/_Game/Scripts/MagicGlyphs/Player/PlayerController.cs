@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using MagicGlyphs.ScriptableObjects;
@@ -96,9 +96,12 @@ namespace MagicGlyphs.Player
 
         protected override void OnTargetRange()
         {
-            
+            if (m_skill)
+                return;
+
             base.OnTargetRange();
 
+            
             Utility.rotateTowards(transform, new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z), 5f);
             //transform.LookAt(new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z));
            
@@ -125,7 +128,10 @@ namespace MagicGlyphs.Player
         //ehhh.. move
         private void Move()
         {
-            
+            cc.Move(velocity * Time.deltaTime);
+
+            if (m_skill)
+                return;
             cc.Move(playerInput.Direction() * speed * Time.deltaTime);
 
             velocity.y += gravity * Time.deltaTime;
@@ -154,13 +160,10 @@ namespace MagicGlyphs.Player
 
                 if (checkVelocity.magnitude > 0.1f && !m_move && !m_skill)
                 {
+                    
                     m_move = true;
-
                     anim.SetTrigger(AnimatorNames.PlayerRun);
-                    //if (transform.forward == -target.transform.forward)
-                    //    anim.SetTrigger(AnimatorNames.PlayerRun);
-                    //else
-                    //    anim.SetTrigger(AnimatorNames.PlayerBackRun);      
+
                 }
             }
             else
@@ -172,7 +175,7 @@ namespace MagicGlyphs.Player
                 }
             }
 
-            cc.Move(velocity * Time.deltaTime);
+            
 
         }
 
@@ -195,7 +198,7 @@ namespace MagicGlyphs.Player
             //animation and feedback stuff here
             StartCoroutine(ChangeMaterial());
 
-           // Debug.Log("animação de levou dano");
+           // Debug.Log("animaÃ§Ã£o de levou dano");
 
         }
 
@@ -211,7 +214,7 @@ namespace MagicGlyphs.Player
             base.Died();
             deathDelegate?.Invoke();
             //animation and feedback stuff here
-          //  Debug.Log("animação de morreu");
+          //  Debug.Log("animaÃ§Ã£o de morreu");
         }
 
         //Called by SOLoader
@@ -223,13 +226,14 @@ namespace MagicGlyphs.Player
 
         void Skill()
         {
-            
+            m_skill = true;
             anim.SetTrigger(AnimatorNames.PlayerSkill);
         }
 
         
         public void SkillStart()
         {
+            m_skill = true;
             weapon.SkillDamage(1);
             if (anim.GetBool(AnimatorNames.PlayerAttack))
                 anim.SetBool(AnimatorNames.PlayerAttack, false);
@@ -237,7 +241,6 @@ namespace MagicGlyphs.Player
             _frameAttack = weapon.frameAttack;
             if (weapon.frameAttack)
                 weapon.frameAttack = false;
-            m_skill = true;
         }
 
         public void SkillEnd()
@@ -246,6 +249,7 @@ namespace MagicGlyphs.Player
             if (weapon.frameAttack != _frameAttack)
                 weapon.frameAttack = _frameAttack;
             m_skill = false;
+            m_move = false;
         }
 
     }

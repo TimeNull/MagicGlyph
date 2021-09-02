@@ -20,13 +20,13 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientSkyColor: {r: 0.49056602, g: 0.49056602, b: 0.49056602, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
+  m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 5390ccc6cbba36142a51bb2d8a8b582d, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -37,8 +37,8 @@ RenderSettings:
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
-  m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
+  m_Sun: {fileID: 611373791}
+  m_IndirectSpecularColor: {r: 0.3336165, g: 0.3119976, b: 0.51336974, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2012,6 +2012,7 @@ Transform:
   - {fileID: 297807975}
   - {fileID: 2071223616}
   - {fileID: 1068890270}
+  - {fileID: 1063913631}
   - {fileID: 499749507}
   - {fileID: 1791539577}
   - {fileID: 1394999866}
@@ -2022,7 +2023,6 @@ Transform:
   - {fileID: 682313083}
   - {fileID: 102113385}
   - {fileID: 1802299171}
-  - {fileID: 1063913631}
   - {fileID: 15791042}
   - {fileID: 151426860}
   - {fileID: 439870847}
@@ -6219,7 +6219,7 @@ Transform:
   m_Children:
   - {fileID: 1964381003}
   m_Father: {fileID: 252615628}
-  m_RootOrder: 48
+  m_RootOrder: 38
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1064283861
 GameObject:
