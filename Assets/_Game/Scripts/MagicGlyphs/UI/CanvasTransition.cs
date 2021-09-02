@@ -62,7 +62,7 @@ public class CanvasTransition : MonoBehaviour
 
     private void Switch(Scene scene, LoadSceneMode mode)
     {
-        Debug.Log("chamou switch");
+
         fadeOut = true;
     }
 

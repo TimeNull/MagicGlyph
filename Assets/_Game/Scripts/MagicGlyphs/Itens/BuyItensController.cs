@@ -23,13 +23,13 @@ namespace MagicGlyphs
         [SerializeField] Image itemImageCanvas;
         [SerializeField] Text coinsPriceCanvas, descricaoItem;
 
-        private void Start()
+        private void Awake()
         {
+            PassLevelManage.defeatLevel -= DrawItem;
             buyItemDelegate -= BuyItem;
+            PassLevelManage.defeatLevel += DrawItem;
             buyItemDelegate += BuyItem;
-
-            MagicGlyphs.PassLevelManage.defeatLevel -= DrawItem;
-            MagicGlyphs.PassLevelManage.defeatLevel += DrawItem;
+            
         }
 
         void DrawItem() //sorteia um item que está dentro da array do objeto e já coloca suas informações no canvas para o player
@@ -50,5 +50,7 @@ namespace MagicGlyphs
                 }
             }
         }
+
+
     }
 }
