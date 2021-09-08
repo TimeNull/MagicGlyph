@@ -18,12 +18,13 @@ namespace MagicGlyphs
             collider = GetComponent<Collider>();
             
             collider.enabled = false; 
-            Debug.Log("O GIGANTE ACORDOU!ψ(｀∇´)ψ");
+
 
         }
 
         public void ActivatePortal()
         {
+            Debug.Log("chamou sdiqsoisqoi");
             PortalObj.SetActive(true);
             collider.enabled = true;
             particlesPortal.SetActive(true);
@@ -32,6 +33,7 @@ namespace MagicGlyphs
 
         public void DeactivatePortal()
         {
+            Debug.Log("deschamou sdiqsoisqoi");
             PortalObj.SetActive(false);
             collider.enabled = false;
             particlesPortal.SetActive(false);

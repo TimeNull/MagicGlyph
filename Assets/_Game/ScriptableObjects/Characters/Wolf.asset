@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Fox
   description: The glyph of the Warrior, incarnated as a cute Wolf.
-  maxLife: 200
+  maxLife: 500
   speed: 5
   atkRadius: 1.5
-  radiusDetection: 2
+  radiusDetection: 4
   atkSpeed: 10
-  atkDamage: 20
+  atkDamage: 30
   atkDebuff: 0
   skills: 00000000

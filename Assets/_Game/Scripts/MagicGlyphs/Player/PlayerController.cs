@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using MagicGlyphs.ScriptableObjects;
@@ -40,8 +40,11 @@ namespace MagicGlyphs.Player
 
         // Prevents animation triggers from being called 17 times in a row 
 
-        private bool m_move;
+        private bool m_move = false;
         private bool m_attack = false;
+        private bool m_skill = false;
+       // private bool m_switch = false;
+        private bool _frameAttack;
 
 
 
@@ -53,7 +56,7 @@ namespace MagicGlyphs.Player
         protected override void Start()
         {
             base.Start();
-
+            
 
             //------ Components inicialization ------
 
@@ -64,6 +67,7 @@ namespace MagicGlyphs.Player
 
 
             weapon = GetComponentInChildren<Weapon>();
+            _frameAttack = weapon.frameAttack;
 
             //------ SO inicialization ------
             UpdateStats();
@@ -83,17 +87,21 @@ namespace MagicGlyphs.Player
         private void FixedUpdate()
         {
 
-            if (playerInput.Skill)
+            if (playerInput.m_skill)
             {
+                m_skill = true;
                 Skill();
             }
         }
 
         protected override void OnTargetRange()
         {
-            
+            if (m_skill)
+                return;
+
             base.OnTargetRange();
 
+            
             Utility.rotateTowards(transform, new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z), 5f);
             //transform.LookAt(new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z));
            
@@ -120,7 +128,10 @@ namespace MagicGlyphs.Player
         //ehhh.. move
         private void Move()
         {
-            
+            cc.Move(velocity * Time.deltaTime);
+
+            if (m_skill)
+                return;
             cc.Move(playerInput.Direction() * speed * Time.deltaTime);
 
             velocity.y += gravity * Time.deltaTime;
@@ -142,10 +153,17 @@ namespace MagicGlyphs.Player
                     transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed);
                 }
 
-                if (checkVelocity.magnitude > 0.1f && !m_move)
+                //if (targetOnRange)
+                //{
+                //    m_switch = true;
+                //}
+
+                if (checkVelocity.magnitude > 0.1f && !m_move && !m_skill)
                 {
+                    
                     m_move = true;
                     anim.SetTrigger(AnimatorNames.PlayerRun);
+
                 }
             }
             else
@@ -157,7 +175,7 @@ namespace MagicGlyphs.Player
                 }
             }
 
-            cc.Move(velocity * Time.deltaTime);
+            
 
         }
 
@@ -180,7 +198,7 @@ namespace MagicGlyphs.Player
             //animation and feedback stuff here
             StartCoroutine(ChangeMaterial());
 
-           // Debug.Log("animação de levou dano");
+           // Debug.Log("animaÃ§Ã£o de levou dano");
 
         }
 
@@ -196,7 +214,7 @@ namespace MagicGlyphs.Player
             base.Died();
             deathDelegate?.Invoke();
             //animation and feedback stuff here
-          //  Debug.Log("animação de morreu");
+          //  Debug.Log("animaÃ§Ã£o de morreu");
         }
 
         //Called by SOLoader
@@ -208,14 +226,32 @@ namespace MagicGlyphs.Player
 
         void Skill()
         {
-
+            m_skill = true;
+            anim.SetTrigger(AnimatorNames.PlayerSkill);
         }
 
-
-        private void OnTriggerEnter(Collider other)
+        
+        public void SkillStart()
         {
+            m_skill = true;
+            weapon.SkillDamage(1);
+            if (anim.GetBool(AnimatorNames.PlayerAttack))
+                anim.SetBool(AnimatorNames.PlayerAttack, false);
 
+            _frameAttack = weapon.frameAttack;
+            if (weapon.frameAttack)
+                weapon.frameAttack = false;
         }
+
+        public void SkillEnd()
+        {
+            m_attack = false;
+            if (weapon.frameAttack != _frameAttack)
+                weapon.frameAttack = _frameAttack;
+            m_skill = false;
+            m_move = false;
+        }
+
     }
 
 }

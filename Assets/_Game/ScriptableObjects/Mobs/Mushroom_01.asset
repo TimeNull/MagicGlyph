@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Mushroom_01
   description: Slow and poison damage.
-  maxLife: 100
-  speed: 5
+  maxLife: 60
+  speed: 3
   atkRadius: 0
   radiusDetection: 20
   atkSpeed: 2
