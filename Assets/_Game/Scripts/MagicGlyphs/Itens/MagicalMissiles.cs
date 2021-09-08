@@ -37,12 +37,16 @@ namespace MagicGlyphs
                     Attack();
                 }
             }
+            else
+            {
+                transform.position = root.transform.position;
+            }
         }
 
 
         IEnumerator Cooldown()
         {
-            meshObj.enabled = false;
+            //meshObj.enabled = false;
             canAttack = false;
             yield return new WaitForSeconds(missileCooldown);
             meshObj.enabled = true;
@@ -77,7 +81,7 @@ namespace MagicGlyphs
         {
             if (meshObj.enabled)
             {
-                meshObj.enabled = false;
+                //meshObj.enabled = false;
             }
 
             numObjectsDetected = Physics.OverlapSphereNonAlloc(root.position, rangeDetection, objectsOnRange, layersToCollide);

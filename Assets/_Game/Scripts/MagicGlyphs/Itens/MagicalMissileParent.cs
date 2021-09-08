@@ -14,7 +14,6 @@ public class MagicalMissileParent : MonoBehaviour
 
         missileObj = Instantiate(prefabMissile, transform.position, Quaternion.identity);
         missileObj.GetComponent<MagicGlyphs.MagicalMissiles>().root = gameObject.transform;
-        missileObj.GetComponent<MeshRenderer>().enabled = false;
         missileObj.transform.SetParent(dontDestroyObj.transform);
     }
 }
